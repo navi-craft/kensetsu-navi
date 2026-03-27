@@ -1,0 +1,753 @@
+<!--
+  ================================================================
+  å»ºè¨­æ¥­éæ¥­ãã (index.html)
+  ================================================================
+  ãããä¿®æ­£ããå ´æã
+  ã»æ¥­èãã¼ã¿ â DATA ãã­ãã¯ï¼ç´380è¡ç®ï¼
+    â æ¥­èè¿½å /åé¤ã¯ããã®éåãç·¨éããã ã
+  ã»å·¥ç¨®è¨­å® â TYPE_CFGï¼ç´355è¡ç®ï¼
+  ã»å½¹ææç¶ãã­ã¼ã¯ã¼ã â YAKUSHO_QUERIESï¼ç´345è¡ç®ï¼
+  ================================================================
+  æçµæ´æ°: 2026-03-28
+  ================================================================
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZCZ5VWE43F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZCZ5VWE43F');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- âââ SEO âââ -->
+  <title>å»ºè¨­æ¥­éæ¥­ããï½ä¸äººè¦ªæ¹ã»æ°è¦éæ¥­ å¶æ¥­åã»ä»å¥ãåã»æç¶ããã¾ã¨ãã¦ç¢ºèª</title>
+  <meta name="description" content="å»ºè¨­æ¥­ã§ç¬ç«ã»éæ¥­ããä¸äººè¦ªæ¹ã»æ³äººåããå·¥ç¨®ï¼å¤§å·¥ã»é»æ°ã»å¡è£ã»åè£ãªã©ï¼ã¨ç«å ´ãé¸ã¶ã ãã§ãå¶æ¥­åãããã³ã°ãµã¼ãã¹ã»è³æä»å¥ãåã»å»ºè¨­æ¥­è¨±å¯ã»å´ç½ä¿éºã»ç¨çå£«ãä¸è¦§è¡¨ç¤ºãæ¨è¦ãªãã»æ¯è¼ãªããé¸ã¶ã®ã¯ããªãã" />
+  <meta name="keywords" content="å»ºè¨­æ¥­ éæ¥­, ä¸äººè¦ªæ¹ éæ¥­, å»ºè¨­æ¥­ ç¬ç«, ä¸äººè¦ªæ¹ å¶æ¥­å, å»ºè¨­æ¥­ ä»å¥ãå, å»ºè¨­æ¥­è¨±å¯ ç³è«, ä¸äººè¦ªæ¹ å´ç½ä¿éº, å·¥ç¨®å¥ å»ºè¨­æ¥­" />
+  <meta property="og:title" content="å»ºè¨­æ¥­éæ¥­ããï½ä¸äººè¦ªæ¹ã»æ°è¦éæ¥­åã" />
+  <meta property="og:description" content="å·¥ç¨®ãé¸ã¶ã ãã§ãå¶æ¥­åã»è³æä»å¥ãã»å»ºè¨­æ¥­è¨±å¯ã»ä¿éºã»ç¨çå£«ãä¸è¦§ç¢ºèªã§ããç¡æããã" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg:#f6f7f9; --card:#fff; --text:#1a1f2e; --muted:#6b7280; --line:#e8eaed;
+      --accent:#d97706; --accent-soft:#fffbeb;
+      --warn:#b45309; --warn-soft:#fef3c7;
+      --green:#059669; --green-soft:#ecfdf5;
+      --blue:#2563eb; --blue-soft:#eff6ff;
+      --navy:#1e293b;
+      --shadow-sm:0 2px 8px rgba(0,0,0,.06);
+      --shadow:0 8px 24px rgba(0,0,0,.09);
+      --r:16px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;}
+    a{color:inherit;text-decoration:none;}
+
+    /* ââ HEADER ââ */
+    .hd{background:var(--card);border-bottom:1px solid var(--line);padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--shadow-sm);}
+    .logo{font-size:15px;font-weight:800;letter-spacing:-.02em;}
+    .logo span{color:var(--accent);}
+    .hd-r{font-size:11px;color:var(--muted);}
+
+    /* ââ HERO ââ */
+    .hero{background:linear-gradient(140deg,#0f172a 0%,#1e293b 55%,#1a3040 100%);color:#fff;padding:56px 20px 48px;text-align:center;}
+    .hbadge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 13px;border-radius:999px;margin-bottom:14px;letter-spacing:.05em;}
+    .hero h1{font-size:clamp(22px,5vw,42px);font-weight:900;line-height:1.18;margin-bottom:12px;letter-spacing:-.02em;}
+    .hero h1 em{color:#fbbf24;font-style:normal;}
+    .hero-sub{color:rgba(255,255,255,.72);font-size:13px;max-width:560px;margin:0 auto;}
+    .hero-feats{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:18px;}
+    .hf{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:5px 12px;font-size:11px;color:rgba(255,255,255,.88);}
+
+    /* ââ STEPS ââ */
+    .wrap{max-width:820px;margin:0 auto;padding:36px 18px 80px;}
+    .slabel{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+    .snum{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
+    .snum.done{background:var(--green);}
+    .stext{font-size:15px;font-weight:700;}
+    .ssub{font-size:11px;color:var(--muted);}
+
+    /* ââ TOGGLE BUTTONS (Step 1) ââ */
+    .toggle-row{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+    .tbtn{flex:1;min-width:160px;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:18px 16px 14px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s;user-select:none;}
+    .tbtn:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+    .tbtn.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft);}
+    .tbtn-ic{font-size:28px;margin-bottom:6px;}
+    .tbtn-name{font-size:14px;font-weight:700;margin-bottom:3px;}
+    .tbtn-desc{font-size:11px;color:var(--muted);}
+
+    /* ââ PERMIT SELECT (Step 2) ââ */
+    .permit-row{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+    .pbtn{flex:1;min-width:140px;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:14px 12px 10px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s;user-select:none;}
+    .pbtn:hover{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft);}
+    .pbtn.sel{border-color:var(--blue);background:var(--blue-soft);box-shadow:0 0 0 3px var(--blue-soft);}
+    .pbtn-ic{font-size:22px;margin-bottom:4px;}
+    .pbtn-name{font-size:12px;font-weight:700;margin-bottom:2px;}
+    .pbtn-desc{font-size:10px;color:var(--muted);}
+
+    /* ââ TYPE GRID (Step 3) ââ */
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:9px;margin-bottom:32px;}
+    .tcard{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px 8px 12px;text-align:center;cursor:pointer;transition:border-color .13s,box-shadow .13s,transform .1s;user-select:none;}
+    .tcard:hover{border-color:var(--accent);box-shadow:var(--shadow-sm);}
+    .tcard.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft);}
+    .tcard:active{transform:scale(.96);}
+    .tic{font-size:28px;margin-bottom:6px;}
+    .tname{font-size:12px;font-weight:700;}
+
+    /* ââ GO BUTTON ââ */
+    .go-wrap{display:flex;justify-content:center;margin-bottom:8px;}
+    .gobtn{background:var(--accent);color:#fff;border:none;border-radius:var(--r);padding:15px 44px;font-size:16px;font-weight:800;cursor:pointer;transition:opacity .15s,transform .1s;letter-spacing:.02em;}
+    .gobtn:disabled{opacity:.35;cursor:not-allowed;}
+    .gobtn:not(:disabled):hover{opacity:.88;}
+    .gobtn:not(:disabled):active{transform:scale(.97);}
+
+    /* ââ RESULTS ââ */
+    .res{display:none;}
+    .res.show{display:block;}
+    .rhead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
+    .rtitle{font-size:20px;font-weight:900;margin-bottom:4px;}
+    .rtitle span{color:var(--accent);}
+    .rmeta{font-size:12px;color:var(--muted);}
+    .rbtn{background:none;border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:border-color .15s;}
+    .rbtn:hover{border-color:var(--accent);}
+
+    .pbar{background:var(--warn-soft);border:1px solid #fde68a;border-radius:10px;padding:9px 14px;font-size:11px;color:var(--warn);margin-bottom:24px;}
+
+    /* ââ GPS BUTTON ââ */
+    .gps-banner{background:linear-gradient(135deg,#1e3a5f 0%,#1e293b 100%);border-radius:var(--r);padding:20px 22px;margin-bottom:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .gps-ic{font-size:36px;flex-shrink:0;}
+    .gps-text{flex:1;}
+    .gps-text h3{color:#fff;font-size:14px;font-weight:800;margin-bottom:3px;}
+    .gps-text p{color:rgba(255,255,255,.65);font-size:11px;}
+    .gps-btn{background:#fbbf24;color:#1a1f2e;border:none;border-radius:999px;padding:10px 22px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;transition:opacity .15s;}
+    .gps-btn:hover{opacity:.88;}
+
+    /* ââ ACCORDION ââ */
+    .acc{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow-sm);}
+    .acc-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;background:var(--card);transition:background .15s;}
+    .acc-hd:hover{background:#fafafa;}
+    .acc-left{display:flex;align-items:center;gap:10px;}
+    .acc-ic{font-size:20px;width:32px;text-align:center;}
+    .acc-title{font-size:14px;font-weight:800;}
+    .acc-badge{font-size:10px;background:var(--accent-soft);color:var(--accent);padding:2px 8px;border-radius:999px;font-weight:700;margin-left:6px;}
+    .acc-badge.new{background:#dcfce7;color:#15803d;}
+    .acc-chev{font-size:14px;color:var(--muted);transition:transform .2s;}
+    .acc.open .acc-chev{transform:rotate(180deg);}
+    .acc-body{display:none;padding:0 14px 14px;background:var(--card);}
+    .acc.open .acc-body{display:block;}
+
+    /* ââ VENDOR CARDS ââ */
+    .vlist{display:flex;flex-direction:column;gap:9px;}
+    .vcard{display:flex;align-items:flex-start;gap:12px;background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s;}
+    .vcard:hover{border-color:var(--accent);box-shadow:var(--shadow-sm);}
+    .v-ic{font-size:24px;flex-shrink:0;margin-top:2px;}
+    .v-body{flex:1;}
+    .v-name{font-size:13px;font-weight:700;margin-bottom:2px;}
+    .v-type{font-size:11px;color:var(--muted);margin-bottom:5px;}
+    .v-tags{display:flex;flex-wrap:wrap;gap:4px;}
+    .vtag{font-size:10px;background:var(--blue-soft);color:var(--blue);padding:2px 7px;border-radius:999px;font-weight:600;}
+    .vtag.aff{background:var(--accent-soft);color:var(--accent);}
+    .v-arr{font-size:14px;color:var(--muted);flex-shrink:0;align-self:center;}
+
+    /* ââ SEARCH CARD ââ */
+    .scard{display:flex;align-items:center;gap:12px;background:var(--blue-soft);border:1px solid #bfdbfe;border-radius:12px;padding:12px 14px;text-decoration:none;color:inherit;transition:border-color .15s;}
+    .scard:hover{border-color:var(--blue);}
+    .scard-icon{font-size:22px;}
+    .scard-text{font-size:12px;font-weight:600;color:var(--blue);}
+
+    /* ââ DIVIDER ââ */
+    .vdivider{font-size:10px;color:var(--muted);padding:6px 2px 2px;font-weight:600;letter-spacing:.04em;}
+
+    /* ââ SEO TEXT ââ */
+    .seo-wrap{background:var(--card);border-top:1px solid var(--line);padding:52px 18px;}
+    .seo-inner{max-width:820px;margin:0 auto;}
+    .seo-inner h2{font-size:22px;font-weight:900;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line);}
+    .seo-inner h3{font-size:16px;font-weight:800;margin:24px 0 8px;}
+    .seo-inner p{font-size:14px;color:#374151;line-height:1.8;margin-bottom:12px;}
+    .seo-inner ol,.seo-inner ul{padding-left:20px;margin-bottom:12px;}
+    .seo-inner li{font-size:14px;color:#374151;line-height:1.8;margin-bottom:4px;}
+    .region-nav{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted);}
+    .region-nav a{background:var(--accent-soft);color:var(--accent);padding:5px 14px;border-radius:999px;font-weight:700;font-size:12px;transition:background .15s;}
+    .region-nav a:hover{background:#fed7aa;}
+
+    /* ââ FOOTER ââ */
+    footer{background:var(--navy);color:rgba(255,255,255,.55);font-size:11px;text-align:center;padding:28px 16px;line-height:2;}
+
+    @media(max-width:520px){
+      .toggle-row{flex-direction:column;}
+      .permit-row{gap:7px;}
+      .pbtn{min-width:100px;padding:10px 8px 8px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ââ HEADER ââ -->
+<header class="hd">
+  <div class="logo">ðï¸ å»ºè¨­æ¥­<span>éæ¥­</span>ãã</div>
+  <div class="hd-r">å¨å½å¯¾å¿ï½ç¡æ</div>
+</header>
+
+<!-- ââ HERO ââ -->
+<div class="hero">
+  <div class="hbadge">ð¨ å»ºè¨­æ¥­ã»ä¸äººè¦ªæ¹åã</div>
+  <h1>å·¥ç¨®ãé¸ã¶ã ãã§<br><em>å¶æ¥­åã»ä»å¥ãåã»æç¶ã</em>ãç¢ºèª</h1>
+  <p class="hero-sub">å¤§å·¥ã»é»æ°ã»å¡è£ã»åè£ãªã©å·¥ç¨®ãã¨ã«ãåè«ãæ¢ãããè³æèª¿éã»å»ºè¨­æ¥­è¨±å¯ã»å´ç½ä¿éºã¾ã§ä¸è¦§è¡¨ç¤ºãé¸ã¶ã®ã¯ããªãèªèº«ã</p>
+  <div class="hero-feats">
+    <span class="hf">ð¯ å¶æ¥­åãããã³ã°ãµã¼ãã¹</span>
+    <span class="hf">ð¨ å·¥å·ã»è³æã®ä»å¥ãå</span>
+    <span class="hf">ð å»ºè¨­æ¥­è¨±å¯ãµãã¼ã</span>
+    <span class="hf">ð¡ï¸ ä¸äººè¦ªæ¹å´ç½ä¿éº</span>
+    <span class="hf">ð ç¨çå£«ã»ã¯ã©ã¦ãä¼è¨</span>
+  </div>
+</div>
+
+<!-- ââ MAIN TOOL ââ -->
+<div class="wrap">
+
+  <!-- STEP 1: ç«å ´ -->
+  <div id="step1">
+    <div class="slabel">
+      <div class="snum" id="sn1">1</div>
+      <div>
+        <div class="stext">ããªãã®ç«å ´ãé¸ãã§ãã ãã</div>
+        <div class="ssub">ä¸äººè¦ªæ¹ã¨ãã¦ç¬ç« or æ³äººã»ä¼ç¤¾ãè¨­ç«</div>
+      </div>
+    </div>
+    <div class="toggle-row">
+      <div class="tbtn" id="t-hitori" onclick="selRole('hitori')">
+        <div class="tbtn-ic">ð·</div>
+        <div class="tbtn-name">ä¸äººè¦ªæ¹ï¼åäººï¼</div>
+        <div class="tbtn-desc">åäººã¨ãã¦ç¬ç«ã»è«è² </div>
+      </div>
+      <div class="tbtn" id="t-houjin" onclick="selRole('houjin')">
+        <div class="tbtn-ic">ð¢</div>
+        <div class="tbtn-name">æ³äººã»ä¼ç¤¾ï¼è¨­ç«æ¸ã¿ or äºå®ï¼</div>
+        <div class="tbtn-desc">æ ªå¼ä¼ç¤¾ã»ååä¼ç¤¾ãªã©</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: å»ºè¨­æ¥­è¨±å¯ -->
+  <div id="step2" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
+    <div class="slabel">
+      <div class="snum" id="sn2">2</div>
+      <div>
+        <div class="stext">å»ºè¨­æ¥­è¨±å¯ã®ç¶æ³ãé¸ãã§ãã ãã</div>
+        <div class="ssub">1ä»¶500ä¸åæªæºã®å·¥äºãªãè¨±å¯ä¸è¦ï¼è»½å¾®ãªå·¥äºï¼</div>
+      </div>
+    </div>
+    <div class="permit-row">
+      <div class="pbtn" id="p-nashi" onclick="selPermit('nashi')">
+        <div class="pbtn-ic">ð</div>
+        <div class="pbtn-name">ãªãï¼500ä¸åæªæºï¼</div>
+        <div class="pbtn-desc">è»½å¾®ãªå·¥äºã®ã¿</div>
+      </div>
+      <div class="pbtn" id="p-ari" onclick="selPermit('ari')">
+        <div class="pbtn-ic">â</div>
+        <div class="pbtn-name">ããï¼åå¾æ¸ã¿ï¼</div>
+        <div class="pbtn-desc">ä¸è¬ã»ç¹å®å»ºè¨­æ¥­è¨±å¯</div>
+      </div>
+      <div class="pbtn" id="p-yotei" onclick="selPermit('yotei')">
+        <div class="pbtn-ic">ð¯</div>
+        <div class="pbtn-name">ããããåå¾äºå®</div>
+        <div class="pbtn-desc">ç³è«æç¶ããç¥ããã</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: å·¥ç¨® -->
+  <div id="step3" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
+    <div class="slabel">
+      <div class="snum" id="sn3">3</div>
+      <div>
+        <div class="stext">å·¥ç¨®ãé¸ãã§ãã ãã</div>
+        <div class="ssub">è¤æ°å·¥ç¨®ãããªãå ´åã¯ã¡ã¤ã³ã®å·¥ç¨®ãé¸æ</div>
+      </div>
+    </div>
+    <div class="tgrid" id="typeGrid"></div>
+
+    <div class="go-wrap">
+      <button class="gobtn" id="goBtn" onclick="showR()" disabled>çµæãè¡¨ç¤ºãã â</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="res" id="resWrap">
+    <div class="rhead">
+      <div>
+        <div class="rtitle" id="rTitle">ä¸äººè¦ªæ¹ Ã <span>å¤§å·¥ã»åæ </span></div>
+        <div class="rmeta">å¶æ¥­åããè³æèª¿éã»ä¿éºã»ç¨çå£«ã¾ã§ãæ¨è¦ã»æ¯è¼ãªããé¸ã¶ã®ã¯ããªãã</div>
+      </div>
+      <button class="rbtn" onclick="doReset()">â é¸ã³ç´ã</button>
+    </div>
+    <div class="pbar">ð æ²è¼æå ±ã¸ã®æ¨è¦ã»ä¿è¨¼ã¯ãã¦ãã¾ãããä¸é¨ãªã³ã¯ã¯ã¢ãã£ãªã¨ã¤ããªã³ã¯ã§ãï¼æ²è¼é ã»åå®¹ã¸ã®å½±é¿ãªãï¼ãææ°æå ±ã¯åç¤¾ã¸ç´æ¥ãç¢ºèªãã ããã</div>
+
+    <!-- GPS ããã¼ -->
+    <div class="gps-banner">
+      <div class="gps-ic">ð</div>
+      <div class="gps-text">
+        <h3>ç¾å¨å°å¨è¾ºã®åè«ãä¼ç¤¾ã»å»ºè¨­ä¼ç¤¾ãæ¢ã</h3>
+        <p>Googleãããã§è¿ãã®å»ºè¨­ä¼ç¤¾ã»å·¥ååºã»ã¼ãã³ã³ãæ¤ç´¢ãã¾ã</p>
+      </div>
+      <a class="gps-btn" id="gpsBtn" href="#" target="_blank" rel="noopener">ãããã§æ¢ã â</a>
+    </div>
+
+    <div id="accWrap"></div>
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- ââ SEO TEXT ââ -->
+<section class="seo-wrap">
+  <div class="seo-inner">
+    <h2>å»ºè¨­æ¥­ã§ç¬ç«ã»éæ¥­ããã«ã¯</h2>
+    <p>å»ºè¨­æ¥­ã§ä¸äººè¦ªæ¹ã¨ãã¦ç¬ç«ããäººã¯å¨å½ã«ç´50ã60ä¸äººããã¨è¨ããã¦ãã¾ããããããã©ãã«å¶æ¥­ããã°ãããããããªãããè³æã¯ã©ãã§ä»å¥ããã¹ããããå»ºè¨­æ¥­è¨±å¯ã¯å¿è¦ãããªã©ãéæ¥­ç´å¾ã«è¿·ãç¹ã¯å¤ãããã¾ãããã®ãã¼ã¸ã§ã¯ãå·¥ç¨®ã¨ç«å ´ãé¸ã¶ã ãã§ãå¿è¦ãªæå ±ãä¸è¦§ã§ç¢ºèªã§ããããã«ãã¾ããã</p>
+
+    <h3>ä¸äººè¦ªæ¹ã¨æ³äººã®éã</h3>
+    <p>ä¸äººè¦ªæ¹ï¼åäººäºæ¥­ä¸»ï¼ã¨ãã¦éæ¥­ããå ´åã¯ãç¨åç½²ã¸ã®éæ¥­å±æåºã¨å´ç½ä¿éºã¸ã®ç¹å¥å å¥ãå¿è¦ã§ããæ³äººï¼æ ªå¼ä¼ç¤¾ã»ååä¼ç¤¾ãªã©ï¼ãè¨­ç«ããå ´åã¯ãæ³äººè¨­ç«ç»è¨ã»ç¤¾ä¼ä¿éºã®å å¥ãå¿è¦ã«ãªãã¾ããããããå»ºè¨­æ¥­è¨±å¯ãå¿è¦ãã©ããã¯ã1ä»¶ã®è«è² éé¡ã500ä¸åä»¥ä¸ã«ãªããã©ãããã§å¤æ­ãã¾ãã</p>
+
+    <h3>å»ºè¨­æ¥­è¨±å¯ãå¿è¦ã«ãªãåºæº</h3>
+    <ul>
+      <li><strong>å»ºç¯ä¸å¼å·¥äº</strong>ï¼1ä»¶ã®è«è² éé¡ã1,500ä¸åä»¥ä¸ or æ¨é ä½å®ã§å»¶ã¹é¢ç©150ã¡ä»¥ä¸</li>
+      <li><strong>ãã®ä»ã®å»ºè¨­å·¥äº</strong>ï¼1ä»¶ã®è«è² éé¡ã500ä¸åä»¥ä¸</li>
+      <li>ä¸è¨æªæºã®ãè»½å¾®ãªå·¥äºãã®ã¿ãè¡ãå ´åã¯è¨±å¯ä¸è¦</li>
+    </ul>
+    <p>å°æ¥çã«åä¾¡ã®é«ãæ¡ä»¶ãåæ³¨ãããå ´åããåè«ãä¼ç¤¾ãããè¨±å¯åå¾ãæ±ãããããå ´åã¯ãæ©ãã«ç³è«ã®æºåãå§ãããã¨ããããããã¾ããç³è«ã¯é½éåºçç¥äºã¾ãã¯å½åäº¤éå¤§è£ã«è¡ãã¾ãã</p>
+
+    <h3>å¶æ¥­åã®è¦ã¤ãæ¹ï¼åè«ãæ¢ãï¼</h3>
+    <p>ä¸äººè¦ªæ¹ã«ã¨ã£ã¦æãéè¦ãªã®ããä»äºãã©ãããåæ³¨ããããã§ããä¸»ãªæ¹æ³ã¨ãã¦ãå»ºè¨­æ¥­åããããã³ã°ãµã¼ãã¹ï¼ãã¯ãªã³ã¯ãªã©ï¼ã¸ã®çfï¦2Ë³ÇÞê/»r·>*rÃ~»Þ.gê_ï
+ó7
+ÏÏã»y»Nhê^YknjZÞ8yú^K«®8;¾~K«®K».i>8¾8(8Òçî/3
++ûgO»+O¿Þ¢»S£¯âï¢«{Ï
+Ã
+×óO
+ç£r·Ç
+×óO
+çã»«Ï
+¿
+Kû£
+ûgð½Àø((ñ Ìûâêë¢«Zç3þk*gç7*Ó÷þw¦fèð½ Ìø(ñÀûâêë¢«Zç¿*Ó7¢¿«
+¦kâã»*Ó÷þw¦fë¿¦§R£W
+3ûo
+O_/_>ûÓ«"G
+K_ÓB#¯
+g#ñÍÑÉ½¹û3&ç"*7"Ûêð½ÍÑÉ½¹û
+K"§R£_âêë¢«Zç
+*Ó÷þw¦fë¯*g
+/O£37ûgk?»¢®/Gòkû33*Ó÷&ç"*¢¢ób;nã7»>Cë
+KÆ
+
+/
+.³®/ú3¿^§¯*g
+/O£
+K+gg
+_ûgð½Àø((ñ ÌûO»kó
+ã»öÿZäð½ Ìø(ñÀû®/Ó¾ò#âêë¢«Zä¿ÎWêë¾ò'ïîë¢¢··¢¢Ç>¿»*ÛÎïÞ¢»¸Ï
+K¦ã*{g
+/£w»ÖÿB#
+?o¯B#ZÛ·#ïîW
+3#ïþw¦fëï¢;B¯
+Kâ¢ë¢ª77ûg¾S¢ò§Ï
+·Ï
+Ã
+:£¢Z¿â"¢3+
+'kâ·®j«Ç>Cúo
+Kn»j£_ûgð½Àø((ñ¥Ø±ÍÌôÉ¥½¸µ¹Øø(ñÍÁ¸û¦Z¦
+×
+#¾òhð½ÍÁ¸ø(ñ¡Éô¡ÑÑÁÌè¼½¹Ù¤µÉÐ¹¥Ñ¡Õ¹¥¼½¥¹Íå½­Ôµ¹Ù¤¼ÑÉÐô}±¹¬û¦Ë¦ê_¦Z/·+Lð½ø(ñ¡Éô¡ÑÑÁÌè¼½¹Ù¤µÉÐ¹¥Ñ¡Õ¹¥¼½Í¡Õ¡¼µ½¹¥É¼ÑÉÐô}±¹¬ûëò×
+ÏÏ
+ß
+¯
+ãð½ø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ñ½½ÑÈø(îë¢¢··¦Z/·+L¾ò<:Ë¢ò'Ç¿>¢ÇgBû»rZÃÇ¿nÓ:Së¢ª7?WñÈø(
+½ÁåÉ¥¡Ð
+¤îë¢¢··¦Z/·+L(ð½½½ÑÈø((ñÍÉ¥ÁÐø(¼¼VSVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV\(¼¼VDöç&&/Úk7¢¢·ºhVD(¼¼VkVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVt)½¹ÍÐe-UM!=}EUI%Lôì(­¥å½½­è ¤ôø/êëê/·»¦Z/·Æ(nã7Zä¢;.göÈ°(¡½©¥¹ÍÑÍÕÉ¥ÑÍÔè ¤ôøB#B3òkø¢¢·®/fï¢¢`ÎW.gÆ &/Úk4°(­¹ÍÑÍÕ­å½­è¡ÁÉµ¥Ð¤ôøÁÉµ¥Ðôôôå½Ñ¤üîë¢¢··¢¢Ç>¼RÏ¢®,¦÷¦Oêsr0&/Úk4èîë¢¢··¢¢Ç>¼nÓZÀ&/Úk4°(É½ÕÍ¤è ¤ôøâêë¢«Zä*Ó÷þw¦fè&ç"*&/Úk4°(Í¡­¥­½­¸è ¤ôøûòkþw¦fèîë¢¢·´*&/Úk4°)ôì((¼¼VCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV@(¼¼MQQ(¼¼VCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV@)±ÐÍ±I½±ô¹Õ±°°Í±AÉµ¥Ðô¹Õ±°°Í±QåÁô¹Õ±°ì((¼¼VCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV@(¼¼Þ¢»¢¢·ºh(¼¼VCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV@)½¹ÍÐQeA}
+ôì(¥­Ôèì±°èÞïz/z°¥èÂ~ªÔ°Í¡¥é¥1°èr£vCïB#vÿï¦G&¤ô°(¹­¤èì±°è¦nïÂ_Þê,°¥èj°Í¡¥é¥1°è¦nïÞkï¦7Þk¦£vCï¦nïÂ_¦f ô°(Ñ½Í½Ôèì±°è_¢°¥èÂ~: °Í¡¥é¥1°è_Zgï"ß¾oï·ó§óï¢ÚÏÓv@ô°(Í­¸èì±°èÞºcï
+ÿ
+¬°¥èÂ~Ä°Í¡¥é¥1°è¯
+ÿ¯ï
+ÿ
+¯ï:v&ô°(¹¥Í½Ôèì±°è¢ï«W
+§ó±¥èÂ~>°Í¡¥é¥1°èÒgïê+vCï:v&ïâ/rÃv@ô°(­Õ­¸èì±°èºÞê/¾ò#¦7º¾ò$°¥èÂ~R°Í¡¥é¥1°è¦7ºvCïÚg&/ïÞÜô°(­¥Ñ¤èì±°è¢öOÞê,°¥èÂ~R °Í¡¥é¥1°è¦7¦ïº'£¢ÎvCïî&§Bô°(é½Õ¸èì±°è¦rKï[,°¥èÂ~2ü°Í¡¥é¥1°è7÷ï"§ï
+ÏÏ
+¿«ó#v@ô°(½½­Ôèì±°èrr£ï¢"_¢°¥èÂ~j°Í¡¥é¥1°è"§ï
+
+ç_
+¯#ïrr£vCZdô°(Ñ­­¥¸èì±°è¦&¶/ï¦&¦ª °¥èÂ~>_¾â<°Í¡¥é¥1°è¦&¶/ïö¦.óïêÛ:v@ô°)ôì((¼¼VCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV@(¼¼Y9=HQ(¼¼VCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCVCV@)½¹ÍÐQôì((¼¼RR ZÛ·#{Ï
+Ã
+×óO
+äRR £Þ»"2[w
+Ï ¤(¥å½}µÑ¡¥¹èl(ì¥èÂ~R\°¹µè
+¿«Ï
+¼°ÑåÁèîë¢¢··&ç2X¢®/Gï6S*oòkû{Ï
+Ã¾ò#Zgfï¦2Ë>¿¾ò$°ÑÌélîë¢¢··&ç2X°¢®/G:\°Zgfï¦2Èt°ÕÉ°è¡ÑÑÁÌè¼½ÑÍÕ­Ôµ±¥¹¬¹¹Ð¼ô°(ì¥èÂ~R\°¹µè9A>_fëÎ °ÑåÁèîë¢¢·ï«W
+§ó·BGG#îÛ{Ï
+À°ÑÌél>ûÓºB¦Bè°>_fëÎ °£n÷¾ûþpt°ÕÉ°è¡ÑÑÁÌè¼½¹Á¹©À¼ô°(ì¥èÂ~R\°¹µèîë¢¢·
+¿§
+$°ÑåÁèâêë¢«Zçè·äººã®æ¡ä»¶ãããã³ã°',                     tags:['è·äººç¹å','ã¹ããå¯¾å¿','ç¡ææ²è¼'], url:'https://kensetsu-cloud.jp/' },
+    { ic:'ð', name:'è·äººããã',          type:'å»ºè¨­æ¥­è·äººã®ä»äºåæ³¨ãã©ãããã©ã¼ã ',               tags:['è·äººåã','æ¡ä»¶åæ³¨','å¨å½å¯¾å¿'], url:'https://shokunin-net.com/' },
+  ],
+
+  // ââ å¬å±å·¥äºå¥æ­æå ± ââ
+  nyusatsu: [
+    { ic:'ð', name:'NJSSï¼å¥æ­æå ±éå ±ãµã¼ãã¹ï¼', type:'å¨å½ã®å¥æ­æå ±ãã¾ã¨ãã¦æ¤ç´¢ã»ã¡ã¼ã«éç¥',  tags:['å¨å½å¯¾å¿','ç¡æãã©ã³ãã','ã¡ã¼ã«éç¥'], url:'https://www.njss.info/' },
+    { ic:'ð', name:'å¥æ­ããã',                    type:'å¬å±å¥æ­æå ±ã®æ¤ç´¢ã»é²è¦§',                 tags:['å¬å±å·¥äº','é½éåºçå¥','å¥æ­åå '], url:'https://www.e-ura.com/' },
+    { ic:'ð', name:'å®å¬éæå ±ãã¼ã¿ã«ãµã¤ã',      type:'ä¸­å°ä¼æ¥­åãå®å¬åºèª¿éæå ±ï¼ç¡æï¼',        tags:['ä¸­å°ä¼æ¥­åã','å½äº¤ç','å®å¬é'], url:'https://www.chus.go.jp/' },
+  ],
+
+  // ââ å·¥å·ã»è³æ å¨å½éè²© ââ
+  shizai_national: [
+    { ic:'ð§', name:'Amazon å»ºè¨­ã»åæ¨è³æ',         type:'å·¥å·ã»è³æã»å®å¨ç¨å å¨å½éè²©',            tags:['ç¿æ¥éé','åæãè±å¯','æ¥­åç¨å¯¾å¿'], url:'https://www.amazon.co.jp/s?k=%E5%BB%BA%E8%A8%AD+%E5%B7%A5%E5%85%B7+%E8%B3%87%E6%9D%90&tag=shucchouconci-22', aff:true },
+    { ic:'ð§', name:'Amazon å®å¨ç¨åã»ä¿è­·å·',       type:'ãã«ã¡ããã»å®å¨å¸¯ã»ä½æ¥­ç éè²©',          tags:['å®å¨ç®¡ç','ç¿æ¥éé','æ¥­åç¨'], url:'https://www.amazon.co.jp/s?k=%E5%AE%89%E5%85%A8+%E3%83%98%E3%83%AB%E3%83%A1%E3%83%83%E3%83%88+%E4%BD%9C%E6%A5%AD%E7%9D%80+%E6%A5%AD%E5%8B%99%E7%94%A8&tag=shucchouconci-22', aff:true },
+    { ic:'ð§', name:'ã¢ãã¿ã­ã¦ï¼MonotaROï¼',        type:'å»ºè¨­ã»å·¥æ¥­ç¨å å°ééè²© 500ä¸ç¹ä»¥ä¸',      tags:['å°ééè²©','è±å¯ãªåæã','æ³äººå¯¾å¿'], url:'https://www.monotaro.com/' },
+  ],
+
+  // ââ å´ç½ä¿éºï¼ç¹å¥å å¥ï¼ ââ
+  rousai: [
+    { ic:'ð¡ï¸', name:'RJCå´ç½ã»ã³ã¿ã¼',              type:'ä¸äººè¦ªæ¹å´ç½ ç¹å¥å å¥ï¼å»ºè¨­æ¥­ï¼',           tags:['å»ºè¨­æ¥­ç¹å','ç¹å¥å å¥','å¨å½å¯¾å¿'], url:'https://www.rjc.or.jp/' },
+    { ic:'ð¡ï¸', name:'ä¸äººè¦ªæ¹å´ç½ä¿éºçµå',          type:'ä¸äººè¦ªæ¹åãå´ç½ä¿éº ç¹å¥å å¥å£ä½',         tags:['ç¹å¥å å¥','å³æ¥å å¥å¯','è²»ç¨æç¢º'], url:'https://hitorioyakata.or.jp/' },
+    { ic:'ð¡ï¸', name:'å»ºè¨­é£åå´åçµå',              type:'ä¸äººè¦ªæ¹ã»ä¸­å°å»ºè¨­æ¥­ å´ç½ã»å´åä¿éº',       tags:['çµåå å¥','å®å¿ãµãã¼ã','å¨å½æ¯é¨'], url:'https://www.kensetsurengou.jp/' },
+  ],
+
+  // ââ å»ºè¨­æ¥­åãæå®³ä¿éº ââ
+  hoken_national: [
+    { ic:'ð¡ï¸', name:'æ±äº¬æµ·ä¸æ¥åï¼å»ºè¨­å·¥äºä¿éºï¼',  type:'å·¥äºä¸­ã®äºæã»ç¬¬ä¸èè³ åãã«ãã¼',         tags:['å»ºè¨­å·¥äºä¿éº','è³ åè²¬ä»»','å¨å½ä»£çåº'], url:'https://www.tokiomarine-nichido.co.jp/' },
+    { ic:'ð¡ï¸', name:'æä¿ã¸ã£ãã³ï¼å»ºè¨­æ¥­åãï¼',    type:'å»ºè¨­æ¥­åãç·åä¿éºã»ãã¤ãã¼ä¿éº',         tags:['ãã¤ãã¼ä¿éº','å»ºè¨­æ¥­å¯¾å¿','å¨å½å¯¾å¿'], url:'https://www.sompo-japan.co.jp/' },
+  ],
+
+  // ââ å»ºè¨­æ¥­è¨±å¯ç³è«ãµãã¼ã ââ
+  kyoka_support: [
+    { ic:'ð', name:'ãã¯ãªã³ã¯è¨±å¯ç³è«ãµãã¼ã',    type:'å»ºè¨­æ¥­è¨±å¯åå¾ãè¡æ¿æ¸å£«ããµãã¼ã',        tags:['è¨±å¯åå¾æ¯æ´','å¨å½å¯¾å¿','ãªã³ã©ã¤ã³ç¸è«'], url:'https://tsuku-link.net/' },
+    { ic:'ð', name:'è¡æ¿æ¸å£«ãããã³ã ',             type:'å»ºè¨­æ¥­è¨±å¯å¯¾å¿ã®è¡æ¿æ¸å£«ãå¨å½æ¤ç´¢ã»ç¡æç¸è«', tags:['å¨å½æ¤ç´¢','ç¡æç¸è«','è¨±å¯ç³è«'], url:'https://www.gyousei.com/' },
+  ],
+
+  // ââ ç¨çå£«ã»ã¯ã©ã¦ãä¼è¨ã»ã¯ã©ã¦ãç¤¾ã ââ
+  tax_national: [
+    { ic:'ð', name:'freeeï¼ã¯ã©ã¦ãä¼è¨ï¼',          type:'åäººäºæ¥­ä¸»ã»æ³äººåã ã¯ã©ã¦ãä¼è¨',        tags:['éè²ç³åå¯¾å¿','èªåé£æº','ã¹ããç®¡ç'], url:'https://px.a8.net/svt/ejp?a8mat=4AZNCL+1KK78Y+3SPO+9FL80Y', aff:true },
+    { ic:'ð', name:'ããã¼ãã©ã¯ã¼ãç¢ºå®ç³å',        type:'ã¯ã©ã¦ãä¼è¨ã»ç¢ºå®ç³å',                   tags:['ç¢ºå®ç³åå¯¾å¿','ã¯ã©ã¦ã','éè¡é£æº'], url:'https://px.a8.net/svt/ejp?a8mat=4AZO4H+37I44Y+4JGQ+BZ8OY', aff:true },
+    { ic:'ð', name:'ããã¼ãã©ã¯ã¼ãéæ¥­å±',          type:'éæ¥­å±ãæç­5åã§ç¡æä½æ',                tags:['ç¡æ','æç­5å','éæ¥­å±'], url:'https://px.a8.net/svt/ejp?a8mat=4AZO4H+36WOJ6+4JGQ+1NQUK2', aff:true },
+    { ic:'ð', name:'ç¨çå£«ãããã³ã ',               type:'å»ºè¨­æ¥­å¯¾å¿ã®ç¨çå£«ãå¨å½ããç¡æç´¹ä»',     tags:['ç¡æç´¹ä»','å»ºè¨­æ¥­å¯¾å¿','å¨å½æ¤ç´¢'], url:'https://www.zeiri4.com/' },
+  ],
+
+  // ââ CCUSï¼å»ºè¨­ã­ã£ãªã¢ã¢ããã·ã¹ãã ï¼ ââ
+  ccus: [
+    { ic:'ð³', name:'å»ºè¨­ã­ã£ãªã¢ã¢ããã·ã¹ãã ï¼CCUSï¼', type:'æè½èã®å°±æ¥­å±¥æ­´ã»è³æ ¼ãæ¥­ççµ±ä¸ã§ç®¡ç', tags:['æ¥­çæ¨æº','åè«ãããæ±ãããã','æè½è¨¼æ'], url:'https://www.ccus.jp/' },
+  ],
+
+  // ââ æ±äººã»å¤æ³¨åæ¢ã ââ
+  kyuujin: [
+    { ic:'ð¤', name:'å»ºè¨­æ¥­æ±äººãã',                type:'å»ºè¨­æ¥­å°éã®æ±äººã»å¤æ³¨åãããã³ã°',       tags:['å»ºè¨­æ¥­ç¹å','è·äººæ¡ç¨','å¤æ³¨å'], url:'https://kensetsu-kyujin.com/' },
+    { ic:'ð¤', name:'Indeedï¼å»ºè¨­æ¥­ï¼',              type:'å»ºè¨­æ¥­åãæ±äºº æ²è¼ã»å¿åï¼ç¡ææ ãã¢ï¼', tags:['å¨å½å¯¾å¿','ç¡ææ ','å¹åºãå·¥ç¨®'], url:'https://jp.indeed.com/q-%E5%BB%BA%E8%A8%AD%E6%A5%AD-%E6%B1%82%E4%BA%BA.html' },
+  ],
+};
+
+// ââââââââââââââââââââââââââââââââââ
+// SELECTION HANDLERS
+// ââââââââââââââââââââââââââââââââââ
+function selRole(role) {
+  selRole = role;
+  document.getElementById('t-hitori').classList.toggle('sel', role === 'hitori');
+  document.getElementById('t-houjin').classList.toggle('sel', role === 'houjin');
+  document.getElementById('sn1').classList.add('done');
+  // unlock step2
+  const s2 = document.getElementById('step2');
+  s2.style.opacity = '1';
+  s2.style.pointerEvents = 'auto';
+}
+
+function selPermit(permit) {
+  selPermit = permit;
+  ['nashi','ari','yotei'].forEach(k => {
+    document.getElementById('p-'+k).classList.toggle('sel', k === permit);
+  });
+  document.getElementById('sn2').classList.add('done');
+  // unlock step3
+  const s3 = document.getElementById('step3');
+  s3.style.opacity = '1';
+  s3.style.pointerEvents = 'auto';
+  updateGoBtn();
+}
+
+function selType(type) {
+  selType = type;
+  document.querySelectorAll('.tcard').forEach(c => c.classList.remove('sel'));
+  document.getElementById('tc-' + type).classList.add('sel');
+  document.getElementById('sn3').classList.add('done');
+  updateGoBtn();
+}
+// Override function name collision
+window.selRole = selRole;
+window.selPermit = selPermit;
+
+function updateGoBtn() {
+  document.getElementById('goBtn').disabled = !(selPermit && selType);
+}
+
+// âââââââââââââââââââââââââââââââââ
+// BUILD TYPE GRID
+// ââââââââââââââââââââââââââââââââââ
+(function buildGrid() {
+  const grid = document.getElementById('typeGrid');
+  Object.entries(TYPE_CFG).forEach(([key, cfg]) => {
+    const d = document.createElement('div');
+    d.className = 'tcard';
+    d.id = 'tc-' + key;
+    d.onclick = () => selType(key);
+    d.innerHTML = `<div class="tic">${cfg.ic}</div><div class="tname">${cfg.label}</div>`;
+    grid.appendChild(d);
+  });
+})();
+
+// ââââââââââââââââââââââââââââââââââ
+// SHOW RESULTS
+// ââââââââââââââââââââââââââââââââââ
+function showR() {
+  if (!selRole || !selPermit || !selType) return;
+
+  const roleLabel = selRole === 'hitori' ? 'ä¸äººè¦ªæ¹' : 'æ³äººã»ä¼ç¤¾';
+  const permitLabel = { nashi:'è¨±å¯ãªã', ari:'è¨±å¯ãã', yotei:'è¨±å¯åå¾äºå®' }[selPermit];
+  const typeCfg = TYPE_CFG[selType];
+
+  // Update title
+  document.getElementById('rTitle').innerHTML =
+    `${roleLabel}ï¼${permitLabel}ï¼Ã <span>${typeCfg.label}</span>`;
+
+  // GPS button
+  const gpsQuery = encodeURIComponent(`${typeCfg.label} å»ºè¨­ä¼ç¤¾ åè«ã`);
+  document.getElementById('gpsBtn').href =
+    `https://www.google.com/maps/search/${gpsQuery}/@35.6812,139.7671,12z`;
+
+  // Build accordion content
+  const wrap = document.getElementById('accWrap');
+  wrap.innerHTML = '';
+
+  const sections = buildSections(typeCfg);
+  sections.forEach(sec => wrap.appendChild(buildAcc(sec)));
+
+  // Show results
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step3').style.display = 'none';
+  const res = document.getElementById('resWrap');
+  res.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ââââââââââââââââââââââââââââââââââ
+// BUILD SECTIONS
+// ââââââââââââââââââââââââââââââââââ
+function buildSections(typeCfg) {
+  const sections = [];
+
+  // â  å¶æ¥­åã»åæ³¨å (ã¡ã¤ã³ã®å·®å¥åãã¤ã³ã)
+  sections.push({
+    ic: 'ð¯',
+    title: 'å¶æ¥­åã»åæ³¨åãæ¢ã',
+    badge: 'NEW',
+    badgeClass: 'new',
+    items: [
+      { type: 'divider', label: 'å»ºè¨­æ¥­ãããã³ã°ãµã¼ãã¹' },
+      ...DATA.eigyo_matching,
+      { type: 'divider', label: 'å¬å±å·¥äº å¥æ­æå ±' },
+      ...DATA.nyusatsu,
+      { type: 'search', query: `${typeCfg.label} åè«ã ä»äº åæ³¨`, label: `Google ã§ã${typeCfg.label} åè«ã ä»äº åæ³¨ããæ¤ç´¢` },
+    ]
+  });
+
+  // â¡ å·¥å·ã»è³æ
+  sections.push({
+    ic: 'ð§',
+    title: `å·¥å·ã»è³æã®ä»å¥ãåï¼${typeCfg.shizaiLabel}ï¼`,
+    badge: null,
+    items: [
+      ...DATA.shizai_national,
+      { type: 'search', query: `${typeCfg.shizaiLabel} æ¥­åç¨ ä»å¥ãå å¸`, label: `Google ã§ã${typeCfg.shizaiLabel} æ¥­åç¨ å¸ããæ¤ç´¢` },
+    ]
+  });
+
+  // â¢ å´ç½ä¿éº
+  sections.push({
+    ic: 'ð¡ï¸',
+    title: 'å´ç½ä¿éºï¼ä¸äººè¦ªæ¹ ç¹å¥å å¥ï¼',
+    badge: 'å¿é ',
+    items: [
+      ...DATA.rousai,
+      { type: 'divider', label: 'å»ºè¨­æ¥­åãæå®³ä¿éº' },
+      ...DATA.hoken_national,
+    ]
+  });
+
+  // â£ å»ºè¨­æ¥­è¨±å¯
+  const kyokaSection = {
+    ic: 'ð',
+    title: 'å»ºè¨­æ¥­è¨±å¯ ç³è«ã»ãµãã¼ã',
+    badge: null,
+    items: []
+  };
+  if (selPermit === 'yotei') {
+    kyokaSection.badge = 'ç³è«æ¨å¥¨';
+    kyokaSection.items.push(...DATA.kyoka_support);
+    kyokaSection.items.push({ type: 'search', query: YAKUSHO_QUERIES.kensetsukyoka(selPermit), label: 'Google ã§å»ºè¨­æ¥­è¨±å¯ã®æç¶ããèª¿ã¹ã' });
+  } else if (selPermit === 'nashi') {
+    kyokaSection.items.push(...DATA.kyoka_support);
+    kyokaSection.items.push({ type: 'search', query: 'å»ºè¨­æ¥­è¨±å¯ å¿è¦ ããããã', label: 'Google ã§ãå»ºè¨­æ¥­è¨±å¯ å¿è¦ ãããããããæ¤ç´¢' });
+  } else {
+    kyokaSection.items.push({ type: 'search', query: 'å»ºè¨­æ¥­è¨±å¯ æ´æ° æç¶ã', label: 'Google ã§å»ºè¨­æ¥­è¨±å¯æ´æ°ã®æç¶ããèª¿ã¹ã' });
+  }
+  sections.push(kyokaSection);
+
+  // â¤ ç¨çå£«ã»ä¼è¨
+  sections.push({
+    ic: 'ð',
+    title: 'ç¨çå£«ã»ã¯ã©ã¦ãä¼è¨',
+    badge: null,
+    items: [
+      ...DATA.tax_national,
+    ]
+  });
+
+  // â¥ å»ºè¨­ã­ã£ãªã¢ã¢ãã (CCUS)
+  sections.push({
+    ic: 'ð³',
+    title: 'å»ºè¨­ã­ã£ãªã¢ã¢ããã·ã¹ãã ï¼CCUSï¼',
+    badge: null,
+    items: [
+      ...DATA.ccus,
+      { type: 'search', query: 'å»ºè¨­ã­ã£ãªã¢ã¢ããã·ã¹ãã  ç»é²æ¹æ³', label: 'Google ã§CCUSç»é²æ¹æ³ãèª¿ã¹ã' },
+    ]
+  });
+
+  // â¦ å½¹ææç¶ã
+  const yakushoItems = [];
+  if (selRole === 'hitori') {
+    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.kaigyodoke(), label: 'éæ¥­å±ã®æ¸ãæ¹ã»æåºæ¹æ³ãèª¿ã¹ã' });
+    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.rousai(), label: 'ä¸äººè¦ªæ¹ å´ç½ç¹å¥å å¥ã®æç¶ããèª¿ã¹ã' });
+  } else {
+    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.hojinsetsuritsu(), label: 'æ³äººè¨­ç«ç»è¨ã®æç¶ããèª¿ã¹ã' });
+    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.shakaikoken(), label: 'ç¤¾ä¼ä¿éº å å¥æç¶ããèª¿ã¹ã' });
+  }
+  sections.push({
+    ic: 'ðï¸',
+    title: 'å½¹ææç¶ãï¼éæ¥­å±ã»æ³äººè¨­ç«ãªã©ï¼',
+    badge: null,
+    items: yakushoItems
+  });
+
+  // â§ æ±äººã»å¤æ³¨å
+  sections.push({
+    ic: 'ð·',
+    title: 'æ±äººã»å¤æ³¨åæ¢ã',
+    badge: null,
+    items: [...DATA.kyuujin]
+  });
+
+  return sections;
+}
+
+// ââââââââââââââââââââââââââââââââââ
+// BUILD ACCORDION
+// ââââââââââââââââââââââââââââââââââ
+function buildAcc(sec) {
+  const acc = document.createElement('div');
+  acc.className = 'acc';
+  const badgeHtml = sec.badge
+    ? `<span class="acc-badge ${sec.badgeClass || ''}">${sec.badge}</span>`
+    : '';
+  acc.innerHTML = `
+    <div class="acc-hd" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <div class="acc-ic">${sec.ic}</div>
+        <div class="acc-title">${sec.title}${badgeHtml}</div>
+      </div>
+      <span class="acc-chev">â¼</span>
+    </div>
+    <div class="acc-body">
+      <div class="vlist" id="vl-${Math.random().toString(36).slice(2)}"></div>
+    </div>`;
+
+  const vlist = acc.querySelector('.vlist');
+  sec.items.forEach(item => {
+    if (item.type === 'divider') {
+      const d = document.createElement('div');
+      d.className = 'vdivider';
+      d.textContent = item.label;
+      vlist.appendChild(d);
+    } else if (item.type === 'search') {
+      const q = encodeURIComponent(item.query);
+      const a = document.createElement('a');
+      a.className = 'scard';
+      a.href = `https://www.google.com/search?q=${q}`;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = `<span class="scard-icon">ð</span><span class="scard-text">ð ${item.label}</span>`;
+      vlist.appendChild(a);
+    } else {
+      const a = document.createElement('a');
+      a.className = 'vcard';
+      a.href = item.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      const tags = (item.tags || []).map(t =>
+        `<span class="vtag${item.aff ? ' aff' : ''}">${t}</span>`
+      ).join('');
+      const affBadge = item.aff ? '<span class="vtag aff">PR</span>' : '';
+      a.innerHTML = `
+        <div class="v-ic">${item.ic}</div>
+        <div class="v-body">
+          <div class="v-name">${item.name}</div>
+          <div class="v-type">${item.type}</div>
+          <div class="v-tags">${tags}${affBadge}</div>
+        </div>
+        <div class="v-arr">âº</div>`;
+      vlist.appendChild(a);
+    }
+  });
+
+  // Open first section by default
+  if (sec.title.includes('å¶æ¥­å')) {
+    acc.classList.add('open');
+  }
+
+  return acc;
+}
+
+// ââââââââââââââââââââââââââââââââââ
+// ACCORDION TOGGLE
+// ââââââââââââââââââââââââââââââââââ
+function toggleAcc(hd) {
+  hd.closest('.acc').classList.toggle('open');
+}
+
+// ââââââââââââââââââââââââââââââââââ
+// RESET
+// ââââââââââââââââââââââââââââââââââ
+function doReset() {
+  selRole = null; selPermit = null; selType = null;
+
+  ['t-hitori','t-houjin'].forEach(id => document.getElementById(id).classList.remove('sel'));
+  ['p-nashi','p-ari','p-yotei'].forEach(id => document.getElementById(id).classList.remove('sel'));
+  document.querySelectorAll('.tcard').forEach(c => c.classList.remove('sel'));
+  ['sn1','sn2','sn3'].forEach(id => document.getElementById(id).classList.remove('done'));
+
+  document.getElementById('step2').style.opacity = '.35';
+  document.getElementById('step2').style.pointerEvents = 'none';
+  document.getElementById('step3').style.opacity = '.35';
+  document.getElementById('step3').style.pointerEvents = 'none';
+  document.getElementById('goBtn').disabled = true;
+
+  document.getElementById('step1').style.display = '';
+  document.getElementById('step2').style.display = '';
+  document.getElementById('step3').style.display = '';
+  document.getElementById('resWrap').classList.remove('show');
+  document.getElementById('accWrap').innerHTML = '';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
