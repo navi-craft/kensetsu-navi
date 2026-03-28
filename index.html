@@ -350,7 +350,7 @@ const YAKUSHO_QUERIES = {
 // ══════════════════════════════════
 // STATE
 // ══════════════════════════════════
-let selRole = null, selPermit = null, selType = null;
+// state vars are declared as _role, _permit, _type (see SELECTION HANDLERS)
 
 // ══════════════════════════════════
 // 工種設定
@@ -437,8 +437,10 @@ const DATA = {
 // ══════════════════════════════════
 // SELECTION HANDLERS
 // ══════════════════════════════════
+var _role = null, _permit = null, _type = null;
+
 function selRole(role) {
-  selRole = role;
+  _role = role;
   document.getElementById('t-hitori').classList.toggle('sel', role === 'hitori');
   document.getElementById('t-houjin').classList.toggle('sel', role === 'houjin');
   document.getElementById('sn1').classList.add('done');
@@ -449,7 +451,7 @@ function selRole(role) {
 }
 
 function selPermit(permit) {
-  selPermit = permit;
+  _permit = permit;
   ['nashi','ari','yotei'].forEach(k => {
     document.getElementById('p-'+k).classList.toggle('sel', k === permit);
   });
@@ -462,18 +464,15 @@ function selPermit(permit) {
 }
 
 function selType(type) {
-  selType = type;
+  _type = type;
   document.querySelectorAll('.tcard').forEach(c => c.classList.remove('sel'));
   document.getElementById('tc-' + type).classList.add('sel');
   document.getElementById('sn3').classList.add('done');
   updateGoBtn();
 }
-// Override function name collision
-window.selRole = selRole;
-window.selPermit = selPermit;
 
 function updateGoBtn() {
-  document.getElementById('goBtn').disabled = !(selPermit && selType);
+  document.getElementById('goBtn').disabled = !(_permit && _type);
 }
 
 // ══════════════════════════════════
@@ -495,11 +494,11 @@ function updateGoBtn() {
 // SHOW RESULTS
 // ══════════════════════════════════
 function showR() {
-  if (!selRole || !selPermit || !selType) return;
+  if (!_role || !_permit || !_type) return;
 
-  const roleLabel = selRole === 'hitori' ? '一人親方' : '法人・会社';
-  const permitLabel = { nashi:'許可なし', ari:'許可あり', yotei:'許可取得予定' }[selPermit];
-  const typeCfg = TYPE_CFG[selType];
+  const roleLabel = _role === 'hitori' ? '一人親方' : '法人・会社';
+  const permitLabel = { nashi:'許可なし', ari:'許可あり', yotei:'許可取得予定' }[_permit];
+  const typeCfg = TYPE_CFG[_type];
 
   // Update title
   document.getElementById('rTitle').innerHTML =
@@ -577,11 +576,11 @@ function buildSections(typeCfg) {
     badge: null,
     items: []
   };
-  if (selPermit === 'yotei') {
+  if (_permit === 'yotei') {
     kyokaSection.badge = '申請推奨';
     kyokaSection.items.push(...DATA.kyoka_support);
-    kyokaSection.items.push({ type: 'search', query: YAKUSHO_QUERIES.kensetsukyoka(selPermit), label: 'Google で建設業許可の手続きを調べる' });
-  } else if (selPermit === 'nashi') {
+    kyokaSection.items.push({ type: 'search', query: YAKUSHO_QUERIES.kensetsukyoka(_permit), label: 'Google で建設業許可の手続きを調べる' });
+  } else if (_permit === 'nashi') {
     kyokaSection.items.push(...DATA.kyoka_support);
     kyokaSection.items.push({ type: 'search', query: '建設業許可 必要 いくらから', label: 'Google で「建設業許可 必要 いくらから」を検索' });
   } else {
@@ -612,7 +611,7 @@ function buildSections(typeCfg) {
 
   // ⑦ 役所手続き
   const yakushoItems = [];
-  if (selRole === 'hitori') {
+  if (_role === 'hitori') {
     yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.kaigyodoke(), label: '開業届の書き方・提出方法を調べる' });
     yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.rousai(), label: '一人親方 労災特別加入の手続きを調べる' });
   } else {
@@ -715,7 +714,7 @@ function toggleAcc(hd) {
 // RESET
 // ══════════════════════════════════
 function doReset() {
-  selRole = null; selPermit = null; selType = null;
+  _role = null; _permit = null; _type = null;
 
   ['t-hitori','t-houjin'].forEach(id => document.getElementById(id).classList.remove('sel'));
   ['p-nashi','p-ari','p-yotei'].forEach(id => document.getElementById(id).classList.remove('sel'));
