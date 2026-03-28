@@ -1,15 +1,6 @@
 <!--
-  ================================================================
-  建設業開業ナビ (index.html)
-  ================================================================
-  【よく修正する場所】
-  ・業者データ → DATA ブロック（約380行目）
-    └ 業者追加/削除はここの配列を編集するだけ
-  ・工種設定 → TYPE_CFG（約355行目）
-  ・役所手続きキーワード → YAKUSHO_QUERIES（約345行目）
-  ================================================================
-  最終更新: 2026-03-28
-  ================================================================
+  建設業開業ナビ index.html
+  仕様書：index_再作成仕様書.md に従い完全再作成（2026-03-28）
 -->
 <!DOCTYPE html>
 <html lang="ja">
@@ -17,14 +8,13 @@
 <!-- GA4: 未設定 → Google Analyticsで新規データストリーム作成後にここに追加 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ═══ SEO ═══ -->
-  <title>建設業開業ナビ｜一人親方・新規開業 営業先・仕入れ先・手続きをまとめて確認</title>
-  <meta name="description" content="建設業で独立・開業する一人親方・法人向け。工種（大工・電気・塗装・内装など）と立場を選ぶだけで、営業先マッチングサービス・資材仕入れ先・建設業許可・労災保険・税理士を一覧表示。推薦なし・比較なし、選ぶのはあなた。" />
-  <meta name="keywords" content="建設業 開業, 一人親方 開業, 建設業 独立, 一人親方 営業先, 建設業 仕入れ先, 建設業許可 申請, 一人親方 労災保険, 工種別 建設業" />
-  <meta property="og:title" content="建設業開業ナビ｜一人親方・新規開業向け" />
-  <meta property="og:description" content="工種を選ぶだけで、営業先・資材仕入れ・建設業許可・保険・税理士を一覧確認できる無料ナビ。" />
+  <title>建設業開業ナビ｜一人親方・独立開業 業種別営業先ガイド（27業種対応）</title>
+  <meta name="description" content="建設業で独立・開業した一人親方向け。27業種×立場×許可状況×独立時期を選ぶだけで、仕事が出る順位・営業先リスト・営業トーク例・アクションプランをまとめて確認。比較なし・推薦なし、選ぶのはあなた。" />
+  <meta name="keywords" content="建設業 独立, 一人親方 営業先, 建設業 開業, 一人親方 仕事 取り方, 建設業 協力会社 登録, 建設業許可" />
+  <meta property="og:title" content="建設業開業ナビ｜一人親方・独立開業 業種別営業先ガイド" />
+  <meta property="og:description" content="27業種対応。仕事が出る順位・営業先・営業トーク例・アクションプランをまとめて確認。" />
   <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://navi-craft.github.io/kensetsu-navi/" />
 
   <style>
     :root {
@@ -33,421 +23,460 @@
       --warn:#b45309; --warn-soft:#fef3c7;
       --green:#059669; --green-soft:#ecfdf5;
       --blue:#2563eb; --blue-soft:#eff6ff;
+      --red:#dc2626; --red-soft:#fef2f2;
       --navy:#1e293b;
       --shadow-sm:0 2px 8px rgba(0,0,0,.06);
       --shadow:0 8px 24px rgba(0,0,0,.09);
-      --r:16px;
+      --r:14px;
     }
     *{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;}
     a{color:inherit;text-decoration:none;}
 
-    /* ── HEADER ── */
+    /* HEADER */
     .hd{background:var(--card);border-bottom:1px solid var(--line);padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--shadow-sm);}
     .logo{font-size:15px;font-weight:800;letter-spacing:-.02em;}
     .logo span{color:var(--accent);}
     .hd-r{font-size:11px;color:var(--muted);}
 
-    /* ── HERO ── */
-    .hero{background:linear-gradient(140deg,#0f172a 0%,#1e293b 55%,#1a3040 100%);color:#fff;padding:56px 20px 48px;text-align:center;}
+    /* HERO */
+    .hero{background:linear-gradient(140deg,#0f172a 0%,#1e293b 55%,#1a3040 100%);color:#fff;padding:52px 20px 44px;text-align:center;}
     .hbadge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 13px;border-radius:999px;margin-bottom:14px;letter-spacing:.05em;}
-    .hero h1{font-size:clamp(22px,5vw,42px);font-weight:900;line-height:1.18;margin-bottom:12px;letter-spacing:-.02em;}
+    .hero h1{font-size:clamp(20px,4.5vw,40px);font-weight:900;line-height:1.2;margin-bottom:12px;letter-spacing:-.02em;}
     .hero h1 em{color:#fbbf24;font-style:normal;}
-    .hero-sub{color:rgba(255,255,255,.72);font-size:13px;max-width:560px;margin:0 auto;}
-    .hero-feats{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:18px;}
+    .hero-sub{color:rgba(255,255,255,.72);font-size:13px;max-width:560px;margin:0 auto 18px;}
+    .hero-feats{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;}
     .hf{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:5px 12px;font-size:11px;color:rgba(255,255,255,.88);}
 
-    /* ── STEPS ── */
-    .wrap{max-width:820px;margin:0 auto;padding:36px 18px 80px;}
-    .slabel{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+    /* WRAP */
+    .wrap{max-width:820px;margin:0 auto;padding:32px 16px 80px;}
+
+    /* STEP LABEL */
+    .slabel{display:flex;align-items:center;gap:9px;margin-bottom:12px;}
     .snum{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
     .snum.done{background:var(--green);}
     .stext{font-size:15px;font-weight:700;}
     .ssub{font-size:11px;color:var(--muted);}
 
-    /* ── TOGGLE BUTTONS (Step 1) ── */
-    .toggle-row{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
-    .tbtn{flex:1;min-width:160px;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:18px 16px 14px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s;user-select:none;}
+    /* TOGGLE BUTTONS (step1,2,4) */
+    .toggle-row{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap;}
+    .tbtn{flex:1;min-width:150px;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px 14px 13px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s;user-select:none;}
     .tbtn:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
     .tbtn.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft);}
-    .tbtn-ic{font-size:28px;margin-bottom:6px;}
-    .tbtn-name{font-size:14px;font-weight:700;margin-bottom:3px;}
+    .tbtn-ic{font-size:26px;margin-bottom:5px;}
+    .tbtn-name{font-size:13px;font-weight:700;margin-bottom:2px;}
     .tbtn-desc{font-size:11px;color:var(--muted);}
 
-    /* ── PERMIT SELECT (Step 2) ── */
-    .permit-row{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
-    .pbtn{flex:1;min-width:140px;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:14px 12px 10px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s;user-select:none;}
-    .pbtn:hover{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft);}
-    .pbtn.sel{border-color:var(--blue);background:var(--blue-soft);box-shadow:0 0 0 3px var(--blue-soft);}
-    .pbtn-ic{font-size:22px;margin-bottom:4px;}
-    .pbtn-name{font-size:12px;font-weight:700;margin-bottom:2px;}
-    .pbtn-desc{font-size:10px;color:var(--muted);}
+    /* TRADE GRID (step3) */
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:26px;}
+    .tcard{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:13px 8px 10px;text-align:center;cursor:pointer;transition:border-color .13s,box-shadow .13s,transform .1s;user-select:none;}
+    .tcard:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-1px);}
+    .tcard.sel{border-color:var(--accent);background:var(--accent-soft);}
+    .tcard .tic{font-size:24px;margin-bottom:4px;display:block;}
+    .tcard .tname{font-size:11px;font-weight:700;line-height:1.3;}
 
-    /* ── TYPE GRID (Step 3) ── */
-    .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:9px;margin-bottom:32px;}
-    .tcard{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px 8px 12px;text-align:center;cursor:pointer;transition:border-color .13s,box-shadow .13s,transform .1s;user-select:none;}
-    .tcard:hover{border-color:var(--accent);box-shadow:var(--shadow-sm);}
-    .tcard.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft);}
-    .tcard:active{transform:scale(.96);}
-    .tic{font-size:28px;margin-bottom:6px;}
-    .tname{font-size:12px;font-weight:700;}
+    /* GO BUTTON */
+    .go-wrap{text-align:center;margin-bottom:32px;}
+    .go-btn{background:var(--accent);color:#fff;border:none;border-radius:var(--r);padding:16px 48px;font-size:16px;font-weight:800;cursor:pointer;transition:background .15s,transform .1s;box-shadow:0 4px 14px rgba(217,119,6,.35);}
+    .go-btn:hover:not(:disabled){background:#b45309;transform:translateY(-1px);}
+    .go-btn:disabled{background:#d1d5db;cursor:default;box-shadow:none;}
 
-    /* ── GO BUTTON ── */
-    .go-wrap{display:flex;justify-content:center;margin-bottom:8px;}
-    .gobtn{background:var(--accent);color:#fff;border:none;border-radius:var(--r);padding:15px 44px;font-size:16px;font-weight:800;cursor:pointer;transition:opacity .15s,transform .1s;letter-spacing:.02em;}
-    .gobtn:disabled{opacity:.35;cursor:not-allowed;}
-    .gobtn:not(:disabled):hover{opacity:.88;}
-    .gobtn:not(:disabled):active{transform:scale(.97);}
+    /* RESULTS */
+    .res-wrap{display:none;}
+    .res-wrap.show{display:block;}
 
-    /* ── RESULTS ── */
-    .res{display:none;}
-    .res.show{display:block;}
-    .rhead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
-    .rtitle{font-size:20px;font-weight:900;margin-bottom:4px;}
-    .rtitle span{color:var(--accent);}
-    .rmeta{font-size:12px;color:var(--muted);}
-    .rbtn{background:none;border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:border-color .15s;}
-    .rbtn:hover{border-color:var(--accent);}
+    /* RESULT HEADER */
+    .res-head{background:var(--navy);color:#fff;border-radius:var(--r);padding:18px 20px;margin-bottom:14px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+    .res-title{font-size:18px;font-weight:800;margin-bottom:3px;}
+    .res-title span{color:#fbbf24;}
+    .res-meta{font-size:11px;color:rgba(255,255,255,.6);}
+    .res-reset{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:7px 14px;font-size:12px;color:#fff;cursor:pointer;font-weight:600;}
+    .res-reset:hover{background:rgba(255,255,255,.25);}
 
-    .pbar{background:var(--warn-soft);border:1px solid #fde68a;border-radius:10px;padding:9px 14px;font-size:11px;color:var(--warn);margin-bottom:24px;}
-
-    /* ── GPS BUTTON ── */
-    .gps-banner{background:linear-gradient(135deg,#1e3a5f 0%,#1e293b 100%);border-radius:var(--r);padding:20px 22px;margin-bottom:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-    .gps-ic{font-size:36px;flex-shrink:0;}
-    .gps-text{flex:1;}
-    .gps-text h3{color:#fff;font-size:14px;font-weight:800;margin-bottom:3px;}
-    .gps-text p{color:rgba(255,255,255,.65);font-size:11px;}
-    .gps-btn{background:#fbbf24;color:#1a1f2e;border:none;border-radius:999px;padding:10px 22px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;transition:opacity .15s;}
-    .gps-btn:hover{opacity:.88;}
-
-    /* ── ACCORDION ── */
-    .acc{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow-sm);}
-    .acc-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;background:var(--card);transition:background .15s;}
+    /* ACCORDION */
+    .acc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:8px;box-shadow:var(--shadow-sm);overflow:hidden;}
+    .acc-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;user-select:none;gap:8px;}
     .acc-hd:hover{background:#fafafa;}
-    .acc-left{display:flex;align-items:center;gap:10px;}
-    .acc-ic{font-size:20px;width:32px;text-align:center;}
-    .acc-title{font-size:14px;font-weight:800;}
-    .acc-badge{font-size:10px;background:var(--accent-soft);color:var(--accent);padding:2px 8px;border-radius:999px;font-weight:700;margin-left:6px;}
-    .acc-badge.new{background:#dcfce7;color:#15803d;}
-    .acc-chev{font-size:14px;color:var(--muted);transition:transform .2s;}
-    .acc.open .acc-chev{transform:rotate(180deg);}
-    .acc-body{display:none;padding:0 14px 14px;background:var(--card);}
+    .acc-l{display:flex;align-items:center;gap:10px;flex:1;min-width:0;}
+    .acc-ic{font-size:20px;flex-shrink:0;}
+    .acc-ti{font-size:14px;font-weight:700;}
+    .acc-r{display:flex;align-items:center;gap:7px;flex-shrink:0;}
+    .abadge{font-size:10px;padding:3px 8px;border-radius:999px;font-weight:700;white-space:nowrap;}
+    .ab-accent{background:var(--accent-soft);color:var(--warn);}
+    .ab-green{background:var(--green-soft);color:var(--green);}
+    .ab-blue{background:var(--blue-soft);color:var(--blue);}
+    .ab-red{background:var(--red-soft);color:var(--red);}
+    .chevron{font-size:11px;color:var(--muted);transition:transform .2s;flex-shrink:0;}
+    .acc.open .chevron{transform:rotate(180deg);}
+    .acc-body{display:none;border-top:1px solid var(--line);padding:16px 18px 18px;}
     .acc.open .acc-body{display:block;}
 
-    /* ── VENDOR CARDS ── */
-    .vlist{display:flex;flex-direction:column;gap:9px;}
-    .vcard{display:flex;align-items:flex-start;gap:12px;background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s;}
-    .vcard:hover{border-color:var(--accent);box-shadow:var(--shadow-sm);}
-    .v-ic{font-size:24px;flex-shrink:0;margin-top:2px;}
-    .v-body{flex:1;}
-    .v-name{font-size:13px;font-weight:700;margin-bottom:2px;}
-    .v-type{font-size:11px;color:var(--muted);margin-bottom:5px;}
-    .v-tags{display:flex;flex-wrap:wrap;gap:4px;}
-    .vtag{font-size:10px;background:var(--blue-soft);color:var(--blue);padding:2px 7px;border-radius:999px;font-weight:600;}
-    .vtag.aff{background:var(--accent-soft);color:var(--accent);}
-    .v-arr{font-size:14px;color:var(--muted);flex-shrink:0;align-self:center;}
+    /* RANKING */
+    .rank-list{list-style:none;display:grid;gap:8px;}
+    .rank-item{display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:10px;padding:11px 14px;}
+    .rank-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;color:#fff;}
+    .rank-num.n1{background:#f59e0b;}
+    .rank-num.n2{background:#6b7280;}
+    .rank-num.n3{background:#d97706;}
+    .rank-num.n4{background:#9ca3af;}
+    .rank-num.n5{background:#d1d5db;color:var(--text);}
+    .rank-label{font-size:14px;font-weight:700;}
+    .rank-note{font-size:11px;color:var(--muted);margin-top:1px;}
 
-    /* ── SEARCH CARD ── */
-    .scard{display:flex;align-items:center;gap:12px;background:var(--blue-soft);border:1px solid #bfdbfe;border-radius:12px;padding:12px 14px;text-decoration:none;color:inherit;transition:border-color .15s;}
-    .scard:hover{border-color:var(--blue);}
-    .scard-icon{font-size:22px;}
-    .scard-text{font-size:12px;font-weight:600;color:var(--blue);}
+    /* SALES TARGET */
+    .st-section{margin-bottom:14px;}
+    .st-head{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+    .st-badge-top{background:#fef3c7;color:#92400e;padding:2px 7px;border-radius:999px;font-size:10px;}
+    .st-badge-next{background:var(--blue-soft);color:var(--blue);padding:2px 7px;border-radius:999px;font-size:10px;}
+    .st-badge-later{background:#f3f4f6;color:#6b7280;padding:2px 7px;border-radius:999px;font-size:10px;}
+    .st-list{display:grid;gap:6px;}
+    .st-item{background:var(--bg);border-radius:9px;padding:9px 12px;font-size:13px;font-weight:600;}
 
-    /* ── DIVIDER ── */
-    .vdivider{font-size:10px;color:var(--muted);padding:6px 2px 2px;font-weight:600;letter-spacing:.04em;}
+    /* COMMON SPOTS */
+    .spot-grid{display:grid;gap:9px;}
+    .spot{display:flex;align-items:flex-start;gap:11px;background:var(--bg);border-radius:10px;padding:12px 14px;}
+    .spot-stars{font-size:15px;flex-shrink:0;line-height:1;}
+    .spot-b{flex:1;}
+    .spot-title{font-size:14px;font-weight:800;margin-bottom:3px;}
+    .spot-reason{font-size:12px;color:var(--muted);}
 
-    /* ── SEO TEXT ── */
-    .seo-wrap{background:var(--card);border-top:1px solid var(--line);padding:52px 18px;}
-    .seo-inner{max-width:820px;margin:0 auto;}
-    .seo-inner h2{font-size:22px;font-weight:900;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line);}
-    .seo-inner h3{font-size:16px;font-weight:800;margin:24px 0 8px;}
-    .seo-inner p{font-size:14px;color:#374151;line-height:1.8;margin-bottom:12px;}
-    .seo-inner ol,.seo-inner ul{padding-left:20px;margin-bottom:12px;}
-    .seo-inner li{font-size:14px;color:#374151;line-height:1.8;margin-bottom:4px;}
-    .region-nav{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted);}
-    .region-nav a{background:var(--accent-soft);color:var(--accent);padding:5px 14px;border-radius:999px;font-weight:700;font-size:12px;transition:background .15s;}
-    .region-nav a:hover{background:#fed7aa;}
+    /* STEPS LIST */
+    .steps-list{display:grid;gap:9px;}
+    .step-item{display:flex;align-items:flex-start;gap:11px;padding:10px 13px;background:var(--bg);border-radius:9px;}
+    .step-n{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .step-txt{font-size:13px;font-weight:600;line-height:1.4;}
 
-    /* ── FOOTER ── */
-    footer{background:var(--navy);color:rgba(255,255,255,.55);font-size:11px;text-align:center;padding:28px 16px;line-height:2;}
+    /* TALK BOX */
+    .talk-box{background:#f8faff;border:1px solid #dbeafe;border-radius:11px;padding:14px 16px;margin-bottom:10px;}
+    .talk-label{font-size:10px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+    .talk-text{font-size:14px;font-weight:700;color:var(--text);line-height:1.6;}
+    .talk-hint{font-size:11px;color:var(--muted);margin-top:6px;}
 
-    @media(max-width:520px){
+    /* DIFFICULTY TABLE */
+    .diff-table{width:100%;border-collapse:collapse;font-size:12px;}
+    .diff-table th{background:#f3f4f6;padding:8px 10px;text-align:left;font-weight:700;border-bottom:2px solid var(--line);}
+    .diff-table td{padding:9px 10px;border-bottom:1px solid var(--line);}
+    .diff-table tr:last-child td{border-bottom:none;}
+    .diff-table tr:hover td{background:#fafafa;}
+    .stars{color:#f59e0b;letter-spacing:1px;}
+    .stars-gray{color:#d1d5db;}
+
+    /* ACTION PLAN */
+    .plan-box{background:var(--bg);border-radius:11px;padding:14px 16px;}
+    .plan-title{font-size:13px;font-weight:800;margin-bottom:10px;color:var(--accent);}
+    .plan-items{display:grid;gap:7px;}
+    .plan-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;}
+    .plan-check{color:var(--green);font-size:14px;flex-shrink:0;line-height:1.4;}
+
+    /* REALITY */
+    .reality-box{background:var(--navy);color:#fff;border-radius:11px;padding:16px 18px;}
+    .reality-title{font-size:13px;font-weight:800;color:#fbbf24;margin-bottom:10px;}
+    .reality-bars{display:grid;gap:7px;margin-bottom:12px;}
+    .rbar{display:flex;align-items:center;gap:10px;}
+    .rbar-label{font-size:12px;color:rgba(255,255,255,.8);width:110px;flex-shrink:0;}
+    .rbar-track{flex:1;background:rgba(255,255,255,.15);border-radius:999px;height:10px;overflow:hidden;}
+    .rbar-fill{height:100%;border-radius:999px;background:var(--accent);}
+    .rbar-pct{font-size:12px;font-weight:700;color:#fbbf24;width:32px;text-align:right;flex-shrink:0;}
+    .reality-note{font-size:12px;color:rgba(255,255,255,.7);border-top:1px solid rgba(255,255,255,.15);padding-top:10px;margin-top:4px;}
+
+    /* GPS / MAP */
+    .map-box{background:var(--green-soft);border:1px solid #a7f3d0;border-radius:11px;padding:14px 16px;margin-bottom:10px;}
+    .map-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;}
+    .map-queries{display:grid;gap:7px;}
+    .map-query{display:flex;align-items:center;gap:10px;}
+    .map-link{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:700;padding:8px 14px;border-radius:8px;cursor:pointer;white-space:nowrap;}
+    .map-link:hover{opacity:.85;}
+    .map-label{font-size:12px;color:var(--text);}
+    .gps-note{font-size:11px;color:var(--muted);margin-top:8px;}
+
+    /* MATCHING */
+    .vlist{display:grid;gap:8px;}
+    .vc{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;transition:box-shadow .12s;}
+    .vc:hover{box-shadow:var(--shadow);}
+    .vic{width:38px;height:38px;border-radius:8px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+    .vb{flex:1;min-width:0;}
+    .vtype{font-size:10px;color:var(--muted);margin-bottom:1px;}
+    .vname{font-size:13px;font-weight:700;}
+    .vsub{font-size:11px;color:var(--muted);margin-top:1px;}
+    .vbtn{display:inline-block;font-size:12px;font-weight:700;padding:7px 11px;border-radius:7px;background:var(--accent);color:#fff;white-space:nowrap;flex-shrink:0;}
+    .vbtn:hover{opacity:.85;}
+    .aff-note{font-size:11px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--line);}
+
+    /* SEO TEXT */
+    .seo{max-width:820px;margin:0 auto;padding:0 16px 60px;}
+    .seo h2{font-size:18px;font-weight:800;margin:28px 0 10px;}
+    .seo h3{font-size:15px;font-weight:700;margin:20px 0 8px;}
+    .seo p{font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.8;}
+    .seo ul{font-size:13px;color:var(--muted);margin-left:18px;margin-bottom:10px;line-height:1.8;}
+
+    /* FOOTER */
+    .ft{text-align:center;padding:24px 20px;font-size:11px;color:var(--muted);border-top:1px solid var(--line);}
+
+    /* RESPONSIVE */
+    @media(max-width:600px){
       .toggle-row{flex-direction:column;}
-      .permit-row{gap:7px;}
-      .pbtn{min-width:100px;padding:10px 8px 8px;}
+      .tbtn{min-width:auto;}
+      .tgrid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));}
+      .diff-table{font-size:11px;}
+      .diff-table th,.diff-table td{padding:7px 7px;}
     }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
 <header class="hd">
-  <div class="logo">🏗️ 建設業<span>開業</span>ナビ</div>
+  <div class="logo">🏗️ 建設業<span>開業ナビ</span></div>
   <div class="hd-r">全国対応｜無料</div>
 </header>
 
-<!-- ── HERO ── -->
-<div class="hero">
-  <div class="hbadge">🔨 建設業・一人親方向け</div>
-  <h1>工種を選ぶだけで<br><em>営業先・仕入れ先・手続き</em>を確認</h1>
-  <p class="hero-sub">大工・電気・塗装・内装など工種ごとに、元請け探しから資材調達・建設業許可・労災保険まで一覧表示。選ぶのはあなた自身。</p>
+<section class="hero">
+  <div class="hbadge">27業種対応｜一人親方・独立開業</div>
+  <h1>業種を選ぶだけで<br><em>営業先と仕事の取り方</em>がわかる</h1>
+  <p class="hero-sub">仕事が出る順位・営業先リスト・営業トーク例・独立時期別アクションプランを一覧表示。比較なし・推薦なし。</p>
   <div class="hero-feats">
-    <span class="hf">🎯 営業先マッチングサービス</span>
-    <span class="hf">🔨 工具・資材の仕入れ先</span>
-    <span class="hf">📝 建設業許可サポート</span>
-    <span class="hf">🛡️ 一人親方労災保険</span>
-    <span class="hf">📊 税理士・クラウド会計</span>
-  </div>
-</div>
-
-<!-- ── MAIN TOOL ── -->
-<div class="wrap">
-
-  <!-- STEP 1: 立場 -->
-  <div id="step1">
-    <div class="slabel">
-      <div class="snum" id="sn1">1</div>
-      <div>
-        <div class="stext">あなたの立場を選んでください</div>
-        <div class="ssub">一人親方として独立 or 法人・会社を設立</div>
-      </div>
-    </div>
-    <div class="toggle-row">
-      <div class="tbtn" id="t-hitori" onclick="selRole('hitori')">
-        <div class="tbtn-ic">👷</div>
-        <div class="tbtn-name">一人親方（個人）</div>
-        <div class="tbtn-desc">個人として独立・請負</div>
-      </div>
-      <div class="tbtn" id="t-houjin" onclick="selRole('houjin')">
-        <div class="tbtn-ic">🏢</div>
-        <div class="tbtn-name">法人・会社（設立済み or 予定）</div>
-        <div class="tbtn-desc">株式会社・合同会社など</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STEP 2: 建設業許可 -->
-  <div id="step2" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
-    <div class="slabel">
-      <div class="snum" id="sn2">2</div>
-      <div>
-        <div class="stext">建設業許可の状況を選んでください</div>
-        <div class="ssub">1件500万円未満の工事なら許可不要（軽微な工事）</div>
-      </div>
-    </div>
-    <div class="permit-row">
-      <div class="pbtn" id="p-nashi" onclick="selPermit('nashi')">
-        <div class="pbtn-ic">📋</div>
-        <div class="pbtn-name">なし（500万円未満）</div>
-        <div class="pbtn-desc">軽微な工事のみ</div>
-      </div>
-      <div class="pbtn" id="p-ari" onclick="selPermit('ari')">
-        <div class="pbtn-ic">✅</div>
-        <div class="pbtn-name">あり（取得済み）</div>
-        <div class="pbtn-desc">一般・特定建設業許可</div>
-      </div>
-      <div class="pbtn" id="p-yotei" onclick="selPermit('yotei')">
-        <div class="pbtn-ic">🎯</div>
-        <div class="pbtn-name">これから取得予定</div>
-        <div class="pbtn-desc">申請手続きを知りたい</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STEP 3: 工種 -->
-  <div id="step3" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
-    <div class="slabel">
-      <div class="snum" id="sn3">3</div>
-      <div>
-        <div class="stext">工種を選んでください</div>
-        <div class="ssub">複数工種をこなす場合はメインの工種を選択</div>
-      </div>
-    </div>
-    <div class="tgrid" id="typeGrid"></div>
-
-    <div class="go-wrap">
-      <button class="gobtn" id="goBtn" onclick="showR()" disabled>結果を表示する →</button>
-    </div>
-  </div>
-
-  <!-- RESULTS -->
-  <div class="res" id="resWrap">
-    <div class="rhead">
-      <div>
-        <div class="rtitle" id="rTitle">一人親方 × <span>大工・型枠</span></div>
-        <div class="rmeta">営業先から資材調達・保険・税理士まで。推薦・比較なし、選ぶのはあなた。</div>
-      </div>
-      <button class="rbtn" onclick="doReset()">← 選び直す</button>
-    </div>
-    <div class="pbar">📋 掲載情報への推薦・保証はしていません。一部リンクはアフィリエイトリンクです（掲載順・内容への影響なし）。最新情報は各社へ直接ご確認ください。</div>
-
-    <!-- GPS バナー -->
-    <div class="gps-banner">
-      <div class="gps-ic">📍</div>
-      <div class="gps-text">
-        <h3>現在地周辺の元請け会社・建設会社を探す</h3>
-        <p>Googleマップで近くの建設会社・工務店・ゼネコンを検索します</p>
-      </div>
-      <a class="gps-btn" id="gpsBtn" href="#" target="_blank" rel="noopener">マップで探す →</a>
-    </div>
-
-    <div id="accWrap"></div>
-  </div>
-
-</div><!-- /wrap -->
-
-<!-- ══ SEO TEXT ══ -->
-<section class="seo-wrap">
-  <div class="seo-inner">
-    <h2>建設業で独立・開業するには</h2>
-    <p>建設業で一人親方として独立する人は全国に約50〜60万人いると言われています。しかし「どこに営業すればいいかわからない」「資材はどこで仕入れるべきか」「建設業許可は必要か」など、開業直後に迷う点は多くあります。このページでは、工種と立場を選ぶだけで、必要な情報を一覧で確認できるようにしました。</p>
-
-    <h3>一人親方と法人の違い</h3>
-    <p>一人親方（個人事業主）として開業する場合は、税務署への開業届提出と労災保険への特別加入が必要です。法人（株式会社・合同会社など）を設立する場合は、法人設立登記・社会保険の加入が必要になります。いずれも建設業許可が必要かどうかは「1件の請負金額が500万円以上になるかどうか」で判断します。</p>
-
-    <h3>建設業許可が必要になる基準</h3>
-    <ul>
-      <li><strong>建築一式工事</strong>：1件の請負金額が1,500万円以上 or 木造住宅で延べ面積150㎡以上</li>
-      <li><strong>その他の建設工事</strong>：1件の請負金額が500万円以上</li>
-      <li>上記未満の「軽微な工事」のみを行う場合は許可不要</li>
-    </ul>
-    <p>将来的に単価の高い案件を受注したい場合や、元請け会社から「許可取得を求められた」場合は、早めに申請の準備を始めることをおすすめします。申請は都道府県知事または国土交通大臣に行います。</p>
-
-    <h3>営業先の見つけ方（元請け探し）</h3>
-    <p>一人親方にとって最も重要なのが「仕事をどこから受注するか」です。主な方法として、建設業向けマッチングサービス（ツクリンクなど）への登録、公共工事の入札参加、地域の工務店・ゼネコンへの直接営業、知人・職人仲間からの紹介があります。このナビでは工種ごとに主要なマッチングサービスと入札情報サービスへのリンクをまとめています。</p>
-
-    <h3>一人親方が必ず加入すべき労災保険</h3>
-    <p>一人親方は労働者ではないため、通常の労災保険は適用されません。しかし現場で怪我をした場合に備え、<strong>「特別加入」制度</strong>を利用して一人親方でも労災保険に加入することができます。多くの元請け会社が「労災特別加入証明書」の提示を求めるため、独立後は早急に加入することをおすすめします。</p>
-
-    <h3>このページの使い方</h3>
-    <p>立場（一人親方/法人）・建設業許可の状況・工種の3つを選択すると、その組み合わせに合った営業先・仕入れ先・保険・税理士を一覧で確認できます。比較ランキングや推薦は一切行っておらず、中立的な情報提供を目的としています。</p>
-
-    <div class="region-nav">
-      <span>関連サイト：</span>
-      <a href="https://navi-craft.github.io/insyoku-navi/" target="_blank">飲食店開業ナビ</a>
-      <a href="https://navi-craft.github.io/shuccho-concierge/" target="_blank">出張コンシェルジュ</a>
-    </div>
+    <span class="hf">🎯 仕事が出る順位</span>
+    <span class="hf">📞 営業トーク例</span>
+    <span class="hf">📅 アクションプラン</span>
+    <span class="hf">🗺️ 地図で探す</span>
   </div>
 </section>
 
-<footer>
+<main class="wrap">
+
+  <!-- STEP 1 -->
+  <div class="slabel">
+    <div class="snum" id="sn1">1</div>
+    <div><div class="stext">あなたの立場を選んでください</div><div class="ssub">一人親方として独立 or 法人・会社を設立</div></div>
+  </div>
+  <div class="toggle-row">
+    <div class="tbtn" id="t-hitori" onclick="selRole('hitori')">
+      <div class="tbtn-ic">👷</div>
+      <div class="tbtn-name">一人親方（個人）</div>
+      <div class="tbtn-desc">個人として独立・請負</div>
+    </div>
+    <div class="tbtn" id="t-houjin" onclick="selRole('houjin')">
+      <div class="tbtn-ic">🏢</div>
+      <div class="tbtn-name">法人・会社（設立済み or 予定）</div>
+      <div class="tbtn-desc">株式会社・合同会社など</div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
+    <div class="slabel">
+      <div class="snum" id="sn2">2</div>
+      <div><div class="stext">建設業許可の状況を選んでください</div><div class="ssub">1件500万円未満の工事なら許可不要（軽微な工事）</div></div>
+    </div>
+    <div class="toggle-row">
+      <div class="tbtn" id="p-nashi" onclick="selPermit('nashi')">
+        <div class="tbtn-ic">📋</div>
+        <div class="tbtn-name">なし（500万円未満）</div>
+        <div class="tbtn-desc">軽微な工事のみ</div>
+      </div>
+      <div class="tbtn" id="p-ari" onclick="selPermit('ari')">
+        <div class="tbtn-ic">✅</div>
+        <div class="tbtn-name">あり（取得済み）</div>
+        <div class="tbtn-desc">一般・特定建設業許可</div>
+      </div>
+      <div class="tbtn" id="p-yotei" onclick="selPermit('yotei')">
+        <div class="tbtn-ic">🎯</div>
+        <div class="tbtn-name">これから取得予定</div>
+        <div class="tbtn-desc">申請手続きを知りたい</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
+    <div class="slabel">
+      <div class="snum" id="sn3">3</div>
+      <div><div class="stext">業種を選んでください</div><div class="ssub">建設業許可27業種対応｜メインの業種を選択</div></div>
+    </div>
+    <div class="tgrid" id="tradeGrid"></div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div id="step4" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
+    <div class="slabel">
+      <div class="snum" id="sn4">4</div>
+      <div><div class="stext">独立してからどのくらいですか？</div><div class="ssub">時期に合ったアクションプランを表示します</div></div>
+    </div>
+    <div class="toggle-row">
+      <div class="tbtn" id="pd-0to3" onclick="selPeriod('0to3')">
+        <div class="tbtn-ic">🚀</div>
+        <div class="tbtn-name">0〜3ヶ月</div>
+        <div class="tbtn-desc">今すぐ仕事を確保したい</div>
+      </div>
+      <div class="tbtn" id="pd-3to12" onclick="selPeriod('3to12')">
+        <div class="tbtn-ic">📈</div>
+        <div class="tbtn-name">3〜12ヶ月</div>
+        <div class="tbtn-desc">安定した下請けを作りたい</div>
+      </div>
+      <div class="tbtn" id="pd-1plus" onclick="selPeriod('1plus')">
+        <div class="tbtn-ic">🏆</div>
+        <div class="tbtn-name">1年以上</div>
+        <div class="tbtn-desc">元請け・直接契約に挑戦</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GO BUTTON -->
+  <div class="go-wrap">
+    <button class="go-btn" id="goBtn" disabled onclick="showResults()">結果を表示する →</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="resWrap" class="res-wrap">
+
+    <div class="res-head">
+      <div>
+        <div class="res-title" id="resTitle">結果</div>
+        <div class="res-meta" id="resMeta"></div>
+      </div>
+      <button class="res-reset" onclick="doReset()">← 選び直す</button>
+    </div>
+
+    <div id="accWrap"></div>
+
+  </div>
+
+</main>
+
+<!-- SEO TEXT -->
+<section class="seo">
+  <h2>建設業で独立・開業するには</h2>
+  <p>建設業で一人親方として独立する人は全国に約50〜60万人いると言われています。しかし「どこに営業すればいいかわからない」「最初はどうやって仕事を取るのか」など、独立直後に迷う人が多くいます。このページでは、業種と立場を選ぶだけで仕事が出る順位・営業先・営業トーク例を確認できるようにしました。</p>
+
+  <h3>建設業独立の現実：仕事はどこから来るか</h3>
+  <p>独立後の仕事の取れる経路を現実的に整理すると、「紹介・人脈から50%、応援・下請けから30%、直接営業15%、ネット・マッチングから5%」というのが実態です。最初は前の会社の人脈が最速の仕事源です。</p>
+
+  <h3>一人親方と法人の違い</h3>
+  <p>一人親方（個人事業主）は税務署への開業届提出と、一人親方労災保険への特別加入が基本です。法人を設立する場合は法人設立登記・社会保険の加入が必要です。いずれも1件の請負金額が500万円（建築一式は1,500万円）以上になる場合は建設業許可が必要です。</p>
+
+  <h3>このサイトの使い方</h3>
+  <p>立場・許可の状況・業種・独立時期の4つを選ぶと、その組み合わせに合った営業先・仕事が出る順位・営業トーク例・アクションプランが表示されます。比較ランキングや推薦は行っていません。情報の選択はあなた自身が行ってください。</p>
+
+  <p style="margin-top:16px;">
+    関連サイト：
+    <a href="https://navi-craft.github.io/insyoku-navi/" style="color:var(--blue);font-weight:700;margin-right:12px;">飲食店開業ナビ</a>
+    <a href="https://navi-craft.github.io/shuccho-concierge/" style="color:var(--blue);font-weight:700;">出張コンシェルジュ</a>
+  </p>
+</section>
+
+<footer class="ft">
   建設業開業ナビ ／ 掲載情報は参考情報です。各社の最新情報は直接ご確認ください。<br>
   Copyright © 建設業開業ナビ
 </footer>
 
 <script>
-// ╔══════════════════════════════════════════════════════════════╗
-// ║  役所手続き設定                                              ║
-// ╚══════════════════════════════════════════════════════════════╝
-const YAKUSHO_QUERIES = {
-  kaigyodoke: () => '個人事業の開業届 書き方 税務署',
-  hojinsetsuritsu: () => '合同会社 設立登記 法務局 手続き',
-  kensetsukyoka: (permit) => permit === 'yotei' ? '建設業許可 申請 都道府県 手続き' : '建設業許可 更新 手続き',
-  rousai: () => '一人親方 労災保険 特別加入 手続き',
-  shakaikoken: () => '社会保険 建設業 加入 手続き',
+// ══════════════════════════════════════════════════════
+// 27業種データ
+// ══════════════════════════════════════════════════════
+const TRADES = {
+  tosou:    { label:'塗装工事',          icon:'🎨', rank:['応援・手伝い（最速・即金）','下請け（建設会社・リフォーム会社）','元請け（工務店・管理会社）','個人客'],      top:['建設会社・リフォーム会社・工務店','防水会社・足場会社'],       next:['管理会社・不動産・店舗業者'],  later:['個人客・HP・SNS'],          gps:'塗装 元請け 会社 協力会社 募集' },
+  daiku:    { label:'大工工事',          icon:'🔨', rank:['工務店（最強）','応援（建設会社）','リフォーム会社','設計事務所','個人'],                               top:['工務店（最強）','建設会社・リフォーム会社'],                   next:['設計事務所・不動産'],          later:['個人'],                     gps:'大工 工務店 協力業者 募集' },
+  denki:    { label:'電気工事',          icon:'⚡', rank:['建設会社・設備会社','空調会社','管理会社・店舗施工会社','電気工事会社','個人'],                         top:['建設会社・設備会社','空調会社'],                                next:['管理会社・店舗施工会社'],      later:['個人'],                     gps:'電気工事 設備会社 協力会社 募集' },
+  kan:      { label:'管工事（配管）',    icon:'🔧', rank:['建設会社・設備会社','リフォーム会社・電気会社','ビル管理会社','個人'],                                 top:['建設会社・設備会社','リフォーム会社・電気会社'],               next:['ビル管理会社'],                later:['個人'],                     gps:'管工事 設備工事 建設会社 協力会社 募集' },
+  doboku:   { label:'土木工事',          icon:'⛏️', rank:['土木会社（応援）','舗装会社','解体会社','外構業者','民間直請け'],                                      top:['土木会社・舗装会社（応援中心）','解体会社'],                   next:['外構業者・造園業者'],          later:['民間直請け'],               gps:'土木工事 建設会社 協力会社 募集' },
+  naiso:    { label:'内装仕上工事',      icon:'🏡', rank:['リフォーム会社','建設会社','不動産（原状回復）','店舗施工会社','個人'],                               top:['リフォーム会社・建設会社','不動産（原状回復）'],               next:['店舗施工会社'],                later:['個人'],                     gps:'内装工事 リフォーム会社 協力会社 募集' },
+  kaitai:   { label:'解体工事',          icon:'🏚️', rank:['建設会社・土木会社','不動産会社','工務店','自治体関連工事','個人'],                                    top:['建設会社・土木会社','不動産会社'],                             next:['工務店'],                      later:['個人'],                     gps:'解体工事 建設会社 協力会社 募集' },
+  yane:     { label:'屋根工事',          icon:'🏠', rank:['建設会社・工務店','塗装会社','リフォーム会社','管理会社','個人'],                                      top:['建設会社・工務店','塗装会社'],                                 next:['リフォーム会社・管理会社'],    later:['個人'],                     gps:'屋根工事 建設会社 協力会社 募集' },
+  bousui:   { label:'防水工事',          icon:'💧', rank:['塗装会社','建設会社','屋根会社','管理会社','個人'],                                                    top:['塗装会社・建設会社','屋根会社'],                               next:['管理会社'],                    later:['個人'],                     gps:'防水工事 建設会社 協力会社 募集' },
+  kenchiku: { label:'建築工事',          icon:'🏗️', rank:['建設会社（応援）','工務店','リフォーム会社','設計事務所','個人'],                                      top:['建設会社・工務店','リフォーム会社'],                           next:['設計事務所・不動産'],          later:['個人'],                     gps:'建築工事 建設会社 協力会社 募集' },
+  sakan:    { label:'左官工事',          icon:'🪣', rank:['建設会社（応援）','工務店','タイル会社','リフォーム会社','個人'],                                      top:['建設会社・工務店','タイル会社'],                               next:['リフォーム会社'],              later:['個人'],                     gps:'左官工事 建設会社 協力会社 募集' },
+  tobi:     { label:'とび・土工工事',    icon:'🦺', rank:['建設会社（応援中心）','土木会社','解体会社','外構業者','直請け'],                                      top:['建設会社・土木会社（応援中心）'],                              next:['解体会社・外構業者'],          later:['直請け'],                   gps:'とび工事 足場工事 建設会社 協力会社 募集' },
+  zouen:    { label:'造園工事',          icon:'🌿', rank:['造園会社（応援）','外構会社','土木会社','不動産・管理会社','個人'],                                    top:['造園会社・外構会社','土木会社'],                               next:['不動産・管理会社'],            later:['個人'],                     gps:'造園工事 外構工事 協力会社 募集' },
+  hoso:     { label:'舗装工事',          icon:'🛣️', rank:['土木会社（応援）','舗装専門会社','建設会社','官公庁工事','民間直請け'],                                top:['土木会社・舗装専門会社（応援・下請）'],                        next:['建設会社'],                    later:['民間・自治体直請け'],       gps:'舗装工事 土木会社 協力会社 募集' },
+  tile:     { label:'タイル・れんが・ブロック', icon:'🧱', rank:['建設会社・工務店','リフォーム会社','外構業者','設計事務所','個人'],                            top:['建設会社・工務店','リフォーム会社'],                           next:['外構業者・設計事務所'],        later:['個人'],                     gps:'タイル工事 建設会社 協力会社 募集' },
+  kozo:     { label:'鋼構造物工事',      icon:'🏭', rank:['建設会社・鉄骨専門業者','プラント会社','橋梁会社','工務店','個人'],                                    top:['建設会社・鉄骨専門業者','プラント・橋梁会社'],                 next:['工務店'],                      later:['個人'],                     gps:'鋼構造物工事 鉄骨工事 建設会社 協力会社 募集' },
+  tekkin:   { label:'鉄筋工事',          icon:'🔩', rank:['建設会社・RC工事会社','基礎工事会社','土木会社','工務店','個人'],                                      top:['建設会社・RC工事会社','基礎工事会社・土木会社'],               next:['工務店'],                      later:['個人'],                     gps:'鉄筋工事 建設会社 協力会社 募集' },
+  bankin:   { label:'板金工事',          icon:'🪛', rank:['建設会社・工務店','屋根・リフォーム会社','設備会社','管理会社','個人'],                               top:['建設会社・工務店','屋根・リフォーム会社'],                     next:['設備会社'],                    later:['個人'],                     gps:'板金工事 建設会社 協力会社 募集' },
+  glass:    { label:'ガラス工事',        icon:'🪟', rank:['建設会社・工務店','サッシ・アルミ会社','リフォーム会社','不動産','個人'],                             top:['建設会社・工務店','サッシ・アルミ会社'],                       next:['リフォーム会社・不動産'],      later:['個人'],                     gps:'ガラス工事 建設会社 協力会社 募集' },
+  kikai:    { label:'機械器具設置工事',  icon:'⚙️', rank:['建設会社・プラント会社','設備会社','メーカー系','工場・倉庫オーナー','個人'],                         top:['建設会社・プラント会社','設備会社'],                           next:['工場・倉庫オーナー直接'],      later:['個人'],                     gps:'機械器具設置工事 プラント 建設会社 協力会社 募集' },
+  netu:     { label:'熱絶縁工事',        icon:'🌡️', rank:['設備・空調会社','建設会社・プラント','工場オーナー','管理会社','個人'],                               top:['設備・空調会社','建設会社・プラント'],                          next:['工場オーナー・管理会社'],      later:['個人'],                     gps:'熱絶縁工事 保温工事 設備会社 協力会社 募集' },
+  tsushin:  { label:'電気通信工事',      icon:'📡', rank:['建設会社・通信会社','設備会社・ITベンダー','管理会社','店舗オーナー','個人'],                          top:['建設会社・通信会社','設備会社・ITベンダー'],                   next:['管理会社・店舗オーナー'],      later:['個人'],                     gps:'電気通信工事 通信工事 建設会社 協力会社 募集' },
+  tategu:   { label:'建具工事',          icon:'🚪', rank:['建設会社・工務店','リフォーム会社','サッシ会社','不動産','個人'],                                      top:['建設会社・工務店','リフォーム会社'],                           next:['サッシ会社・不動産'],          later:['個人'],                     gps:'建具工事 工務店 協力会社 募集' },
+  suidou:   { label:'水道施設工事',      icon:'🚰', rank:['建設会社・設備会社','管工事会社','自治体関連工事','管理会社','個人'],                                  top:['建設会社・設備会社','管工事会社'],                             next:['管理会社'],                    later:['自治体・個人'],             gps:'水道工事 設備会社 協力会社 募集' },
+  ishi:     { label:'石工事',            icon:'🪨', rank:['建設会社・工務店','外構業者','造園会社','設計事務所','個人'],                                          top:['建設会社・工務店','外構業者'],                                 next:['造園会社・設計事務所'],        later:['個人'],                     gps:'石工事 外構工事 建設会社 協力会社 募集' },
+  syunsetsu:{ label:'しゅんせつ工事',    icon:'⚓', rank:['土木・港湾会社（応援）','建設会社','浚渫専門会社','官公庁工事','民間'],                              top:['土木・港湾・浚渫専門会社','建設会社'],                         next:['自治体関連'],                  later:['民間直請け'],               gps:'しゅんせつ工事 浚渫 土木会社 協力会社 募集' },
+  sakui:    { label:'さく井工事',        icon:'🕳️', rank:['さく井・掘削専門会社（応援）','土木会社','地盤調査会社','建設会社','個人'],                          top:['さく井・掘削専門会社','土木会社'],                             next:['地盤調査会社・建設会社'],      later:['個人'],                     gps:'さく井工事 掘削工事 建設会社 協力会社 募集' },
 };
 
-// ══════════════════════════════════
+// 独立時期別アクションプラン
+const ACTION_PLANS = {
+  '0to3': {
+    label: '0〜3ヶ月：今すぐ仕事を確保する',
+    items: [
+      '元いた会社・先輩・後輩・職人仲間に連絡する（一番確実）',
+      '材料屋・資材屋に挨拶に行く（紹介が生まれる場所）',
+      '足場屋に挨拶に行く（あらゆる業種の職人と接点がある）',
+      '近所の建設会社・工務店 3社に飛び込む',
+      'マッチングサービスに登録する（ツクリンク等）',
+      '名刺を作る（100枚 2,000〜3,000円）',
+    ]
+  },
+  '3to12': {
+    label: '3〜12ヶ月：安定した仕事先を作る',
+    items: [
+      '建設会社・工務店に協力会社登録申請を出す',
+      '月に1社ずつ新規開拓を続ける',
+      '現場で出会った業者と名刺交換・連絡先交換',
+      '得意な仕事の実績写真を撮り始める',
+      '一人親方労災保険に必ず加入する',
+      '確定申告の準備（freee・マネーフォワード等）',
+    ]
+  },
+  '1plus': {
+    label: '1年以上：元請け・直接契約に挑戦する',
+    items: [
+      '直接の元請け契約を1社作る目標を立てる',
+      'HP・SNSで実績写真・施工事例を発信する',
+      'マッチングサービスで元請け受注に挑戦する',
+      '建設業許可の取得を検討する（500万円以上の受注に備える）',
+      '協力業者・応援の職人を確保しておく',
+    ]
+  }
+};
+
+// 営業難易度テーブル
+const DIFF_TABLE = [
+  { label:'元人脈・前職のつながり',     diff:1, vol:4, stable:5 },
+  { label:'建設会社（応援・下請）',      diff:2, vol:5, stable:4 },
+  { label:'工務店',                     diff:3, vol:4, stable:4 },
+  { label:'リフォーム会社',             diff:3, vol:3, stable:3 },
+  { label:'管理会社・不動産',           diff:4, vol:2, stable:2 },
+  { label:'個人客',                     diff:5, vol:1, stable:1 },
+];
+
+// ══════════════════════════════════════════════════════
 // STATE
-// ══════════════════════════════════
-// state vars are declared as _role, _permit, _type (see SELECTION HANDLERS)
+// ══════════════════════════════════════════════════════
+var _role = null, _permit = null, _trade = null, _period = null;
 
-// ══════════════════════════════════
-// 工種設定
-// ══════════════════════════════════
-const TYPE_CFG = {
-  daiku:    { label:'大工・型枠',      ic:'🪵', shizaiLabel:'木材・合板・金物' },
-  denki:    { label:'電気工事',        ic:'⚡', shizaiLabel:'電線・配線部材・電気機器' },
-  tosou:    { label:'塗装',            ic:'🎨', shizaiLabel:'塗料・刷毛・ローラー・足場材' },
-  sakan:    { label:'左官・タイル',    ic:'🧱', shizaiLabel:'モルタル・タイル・接着剤' },
-  naisou:   { label:'内装・リフォーム',ic:'🏠', shizaiLabel:'壁紙・床材・接着剤・下地材' },
-  kukan:    { label:'管工事（配管）',  ic:'🔧', shizaiLabel:'配管材・継手・工具' },
-  kaitai:   { label:'解体工事',        ic:'🔨', shizaiLabel:'重機・安全資材・廃棄物処理' },
-  zouen:    { label:'造園・外構',      ic:'🌿', shizaiLabel:'植栽・砂利・コンクリート材' },
-  doboku:   { label:'土木・舗装',      ic:'🚧', shizaiLabel:'砂利・アスファルト・土木材料' },
-  tekkin:   { label:'鉄筋・鉄骨',     ic:'🏗️', shizaiLabel:'鉄筋・形鋼・溶接材' },
-};
+// ══════════════════════════════════════════════════════
+// BUILD TRADE GRID
+// ══════════════════════════════════════════════════════
+(function buildGrid() {
+  const grid = document.getElementById('tradeGrid');
+  Object.entries(TRADES).forEach(([key, t]) => {
+    const d = document.createElement('div');
+    d.className = 'tcard';
+    d.id = 'tc-' + key;
+    d.onclick = () => selTrade(key);
+    d.innerHTML = `<span class="tic">${t.icon}</span><div class="tname">${t.label}</div>`;
+    grid.appendChild(d);
+  });
+})();
 
-// ══════════════════════════════════
-// VENDOR DATA
-// ══════════════════════════════════
-const DATA = {
-
-  // ── 営業先マッチングサービス ── (差別化ポイント)
-  eigyo_matching: [
-    { ic:'🔗', name:'ツクリンク',         type:'建設業特化 元請け・協力会社マッチング（無料登録可）',  tags:['建設業特化','元請け探し','無料登録'], url:'https://tsuku-link.net/' },
-    { ic:'🔗', name:'ANDPAD受発注',        type:'建設・リフォーム業向け案件マッチング',               tags:['現場管理連携','受発注','全国対応'], url:'https://andpad.jp/' },
-    { ic:'🔗', name:'建設クラウド',        type:'一人親方・職人の案件マッチング',                     tags:['職人特化','スマホ対応','無料掲載'], url:'https://kensetsu-cloud.jp/' },
-    { ic:'🔗', name:'職人ネット',          type:'建設業職人の仕事受注プラットフォーム',               tags:['職人向け','案件受注','全国対応'], url:'https://shokunin-net.com/' },
-  ],
-
-  // ── 公共工事入札情報 ──
-  nyusatsu: [
-    { ic:'📄', name:'NJSS（入札情報速報サービス）', type:'全国の入札情報をまとめて検索・メール通知',  tags:['全国対応','無料プランあり','メール通知'], url:'https://www.njss.info/' },
-    { ic:'📄', name:'入札ネット',                    type:'公共入札情報の検索・閲覧',                 tags:['公共工事','都道府県別','入札参加'], url:'https://www.e-ura.com/' },
-    { ic:'📄', name:'官公需情報ポータルサイト',      type:'中小企業向け官公庁調達情報（無料）',        tags:['中小企業向け','国交省','官公需'], url:'https://www.chus.go.jp/' },
-  ],
-
-  // ── 工具・資材 全国通販 ──
-  shizai_national: [
-    { ic:'🔧', name:'Amazon 建設・土木資材',         type:'工具・資材・安全用品 全国通販',            tags:['翌日配送','品揃え豊富','業務用対応'], url:'https://www.amazon.co.jp/s?k=%E5%BB%BA%E8%A8%AD+%E5%B7%A5%E5%85%B7+%E8%B3%87%E6%9D%90&tag=shucchouconci-22', aff:true },
-    { ic:'🔧', name:'Amazon 安全用品・保護具',       type:'ヘルメット・安全帯・作業着 通販',          tags:['安全管理','翌日配送','業務用'], url:'https://www.amazon.co.jp/s?k=%E5%AE%89%E5%85%A8+%E3%83%98%E3%83%AB%E3%83%A1%E3%83%83%E3%83%88+%E4%BD%9C%E6%A5%AD%E7%9D%80+%E6%A5%AD%E5%8B%99%E7%94%A8&tag=shucchouconci-22', aff:true },
-    { ic:'🔧', name:'モノタロウ（MonotaRO）',        type:'建設・工業用品 専門通販 500万点以上',      tags:['専門通販','豊富な品揃え','法人対応'], url:'https://www.monotaro.com/' },
-  ],
-
-  // ── 労災保険（特別加入） ──
-  rousai: [
-    { ic:'🛡️', name:'RJC労災センター',              type:'一人親方労災 特別加入（建設業）',           tags:['建設業特化','特別加入','全国対応'], url:'https://www.rjc.or.jp/' },
-    { ic:'🛡️', name:'一人親方労災保険組合',          type:'一人親方向け労災保険 特別加入団体',         tags:['特別加入','即日加入可','費用明確'], url:'https://hitorioyakata.or.jp/' },
-    { ic:'🛡️', name:'建設連合労働組合',              type:'一人親方・中小建設業 労災・労働保険',       tags:['組合加入','安心サポート','全国支部'], url:'https://www.kensetsurengou.jp/' },
-  ],
-
-  // ── 建設業向け損害保険 ──
-  hoken_national: [
-    { ic:'🛡️', name:'東京海上日動（建設工事保険）',  type:'工事中の事故・第三者賠償をカバー',         tags:['建設工事保険','賠償責任','全国代理店'], url:'https://www.tokiomarine-nichido.co.jp/' },
-    { ic:'🛡️', name:'損保ジャパン（建設業向け）',    type:'建設業向け総合保険・ハイパー保険',         tags:['ハイパー保険','建設業対応','全国対応'], url:'https://www.sompo-japan.co.jp/' },
-  ],
-
-  // ── 建設業許可申請サポート ──
-  kyoka_support: [
-    { ic:'📝', name:'ツクリンク許可申請サポート',    type:'建設業許可取得を行政書士がサポート',        tags:['許可取得支援','全国対応','オンライン相談'], url:'https://tsuku-link.net/' },
-    { ic:'📝', name:'行政書士ドットコム',             type:'建設業許可対応の行政書士を全国検索・無料相談', tags:['全国検索','無料相談','許可申請'], url:'https://www.gyousei.com/' },
-  ],
-
-  // ── 税理士・クラウド会計 ──
-  tax_national: [
-    { ic:'📊', name:'freee（クラウド会計）',          type:'個人事業主・法人向け クラウド会計',        tags:['青色申告対応','自動連携','スマホ管理'], url:'https://px.a8.net/svt/ejp?a8mat=4AZNCL+1KK78Y+3SPO+9FL80Y', aff:true },
-    { ic:'📊', name:'マネーフォワード確定申告',        type:'クラウド会計・確定申告',                   tags:['確定申告対応','クラウド','銀行連携'], url:'https://px.a8.net/svt/ejp?a8mat=4AZO4H+37I44Y+4JGQ+BZ8OY', aff:true },
-    { ic:'📊', name:'マネーフォワード開業届',          type:'開業届を最短5分で無料作成',                tags:['無料','最短5分','開業届'], url:'https://px.a8.net/svt/ejp?a8mat=4AZO4H+36WOJ6+4JGQ+1NQUK2', aff:true },
-    { ic:'📊', name:'税理士ドットコム',               type:'建設業対応の税理士を全国から無料紹介',     tags:['無料紹介','建設業対応','全国検索'], url:'https://www.zeiri4.com/' },
-  ],
-
-  // ── CCUS（建設キャリアアップシステム） ──
-  ccus: [
-    { ic:'💳', name:'建設キャリアアップシステム（CCUS）', type:'技能者の就業履歴・資格を業界統一で管理', tags:['業界標準','元請けから求められる','技能証明'], url:'https://www.ccus.jp/' },
-  ],
-
-  // ── 求人・外注先探し ──
-  kyuujin: [
-    { ic:'👤', name:'建設業求人ナビ',                type:'建設業専門の求人・外注先マッチング',       tags:['建設業特化','職人採用','外注先'], url:'https://kensetsu-kyujin.com/' },
-    { ic:'👤', name:'Indeed（建設業）',              type:'建設業向け求人 掲載・応募（無料枠あり）', tags:['全国対応','無料枠','幅広い工種'], url:'https://jp.indeed.com/q-%E5%BB%BA%E8%A8%AD%E6%A5%AD-%E6%B1%82%E4%BA%BA.html' },
-  ],
-};
-
-// ══════════════════════════════════
+// ══════════════════════════════════════════════════════
 // SELECTION HANDLERS
-// ══════════════════════════════════
-var _role = null, _permit = null, _type = null;
-
+// ══════════════════════════════════════════════════════
 function selRole(role) {
   _role = role;
   document.getElementById('t-hitori').classList.toggle('sel', role === 'hitori');
   document.getElementById('t-houjin').classList.toggle('sel', role === 'houjin');
   document.getElementById('sn1').classList.add('done');
-  // unlock step2
-  const s2 = document.getElementById('step2');
-  s2.style.opacity = '1';
-  s2.style.pointerEvents = 'auto';
+  unlock('step2');
 }
 
 function selPermit(permit) {
@@ -456,280 +485,365 @@ function selPermit(permit) {
     document.getElementById('p-'+k).classList.toggle('sel', k === permit);
   });
   document.getElementById('sn2').classList.add('done');
-  // unlock step3
-  const s3 = document.getElementById('step3');
-  s3.style.opacity = '1';
-  s3.style.pointerEvents = 'auto';
+  unlock('step3');
+}
+
+function selTrade(trade) {
+  _trade = trade;
+  document.querySelectorAll('.tcard').forEach(c => c.classList.remove('sel'));
+  document.getElementById('tc-' + trade).classList.add('sel');
+  document.getElementById('sn3').classList.add('done');
+  unlock('step4');
   updateGoBtn();
 }
 
-function selType(type) {
-  _type = type;
-  document.querySelectorAll('.tcard').forEach(c => c.classList.remove('sel'));
-  document.getElementById('tc-' + type).classList.add('sel');
-  document.getElementById('sn3').classList.add('done');
+function selPeriod(period) {
+  _period = period;
+  ['0to3','3to12','1plus'].forEach(k => {
+    document.getElementById('pd-'+k).classList.toggle('sel', k === period);
+  });
+  document.getElementById('sn4').classList.add('done');
   updateGoBtn();
+}
+
+function unlock(id) {
+  const el = document.getElementById(id);
+  el.style.opacity = '1';
+  el.style.pointerEvents = 'auto';
 }
 
 function updateGoBtn() {
-  document.getElementById('goBtn').disabled = !(_permit && _type);
+  document.getElementById('goBtn').disabled = !(_trade && _period);
 }
 
-// ══════════════════════════════════
-// BUILD TYPE GRID
-// ══════════════════════════════════
-(function buildGrid() {
-  const grid = document.getElementById('typeGrid');
-  Object.entries(TYPE_CFG).forEach(([key, cfg]) => {
-    const d = document.createElement('div');
-    d.className = 'tcard';
-    d.id = 'tc-' + key;
-    d.onclick = () => selType(key);
-    d.innerHTML = `<div class="tic">${cfg.ic}</div><div class="tname">${cfg.label}</div>`;
-    grid.appendChild(d);
-  });
-})();
+// ══════════════════════════════════════════════════════
+// STARS HELPER
+// ══════════════════════════════════════════════════════
+function stars(n, max) {
+  return '<span class="stars">' + '★'.repeat(n) + '</span><span class="stars-gray">' + '★'.repeat(max - n) + '</span>';
+}
 
-// ══════════════════════════════════
+// ══════════════════════════════════════════════════════
 // SHOW RESULTS
-// ══════════════════════════════════
-function showR() {
-  if (!_role || !_permit || !_type) return;
+// ══════════════════════════════════════════════════════
+function showResults() {
+  if (!_role || !_permit || !_trade || !_period) return;
 
-  const roleLabel = _role === 'hitori' ? '一人親方' : '法人・会社';
+  const td = TRADES[_trade];
+  const roleLabel  = _role === 'hitori' ? '一人親方（個人）' : '法人・会社';
   const permitLabel = { nashi:'許可なし', ari:'許可あり', yotei:'許可取得予定' }[_permit];
-  const typeCfg = TYPE_CFG[_type];
+  const periodLabel = { '0to3':'独立0〜3ヶ月', '3to12':'独立3〜12ヶ月', '1plus':'独立1年以上' }[_period];
+  const plan = ACTION_PLANS[_period];
 
-  // Update title
-  document.getElementById('rTitle').innerHTML =
-    `${roleLabel}（${permitLabel}）× <span>${typeCfg.label}</span>`;
+  document.getElementById('resTitle').innerHTML =
+    `<span>${td.icon} ${td.label}</span> × ${roleLabel}`;
+  document.getElementById('resMeta').textContent =
+    `${permitLabel} ／ ${periodLabel}`;
 
-  // GPS button
-  const gpsQuery = encodeURIComponent(`${typeCfg.label} 建設会社 元請け`);
-  document.getElementById('gpsBtn').href =
-    `https://www.google.com/maps/search/${gpsQuery}/@35.6812,139.7671,12z`;
-
-  // Build accordion content
-  const wrap = document.getElementById('accWrap');
-  wrap.innerHTML = '';
-
-  const sections = buildSections(typeCfg);
-  sections.forEach(sec => wrap.appendChild(buildAcc(sec)));
-
-  // Show results
-  document.getElementById('step1').style.display = 'none';
-  document.getElementById('step2').style.display = 'none';
-  document.getElementById('step3').style.display = 'none';
-  const res = document.getElementById('resWrap');
-  res.classList.add('show');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// ══════════════════════════════════
-// BUILD SECTIONS
-// ══════════════════════════════════
-function buildSections(typeCfg) {
   const sections = [];
 
-  // ① 営業先・受注先 (メインの差別化ポイント)
-  sections.push({
-    ic: '🎯',
-    title: '営業先・受注先を探す',
-    badge: 'NEW',
-    badgeClass: 'new',
-    items: [
-      { type: 'divider', label: '建設業マッチングサービス' },
-      ...DATA.eigyo_matching,
-      { type: 'divider', label: '公共工事 入札情報' },
-      ...DATA.nyusatsu,
-      { type: 'search', query: `${typeCfg.label} 元請け 仕事 受注`, label: `Google で「${typeCfg.label} 元請け 仕事 受注」を検索` },
-    ]
-  });
+  // ① 仕事が出る順位
+  const rankItems = td.rank.map((r, i) => {
+    const cls = ['n1','n2','n3','n4','n5'][i] || 'n5';
+    const notes = ['最速・即金','安定した量','継続しやすい','時間がかかる','難易度高'];
+    return `<li class="rank-item">
+      <div class="rank-num ${cls}">${i+1}</div>
+      <div><div class="rank-label">${r}</div><div class="rank-note">${notes[i]||''}</div></div>
+    </li>`;
+  }).join('');
+  sections.push({ ic:'🏆', title:'仕事が出る順位', badge:'最重要', badgeCls:'ab-accent', body:`
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">独立直後は上位から順番に当たるのが鉄則です。</p>
+    <ul class="rank-list">${rankItems}</ul>
+  `, open:true });
 
-  // ② 工具・資材
-  sections.push({
-    ic: '🔧',
-    title: `工具・資材の仕入れ先（${typeCfg.shizaiLabel}）`,
-    badge: null,
-    items: [
-      ...DATA.shizai_national,
-      { type: 'search', query: `${typeCfg.shizaiLabel} 業務用 仕入れ先 卸`, label: `Google で「${typeCfg.shizaiLabel} 業務用 卸」を検索` },
-    ]
-  });
-
-  // ③ 労災保険
-  sections.push({
-    ic: '🛡️',
-    title: '労災保険（一人親方 特別加入）',
-    badge: '必須',
-    items: [
-      ...DATA.rousai,
-      { type: 'divider', label: '建設業向け損害保険' },
-      ...DATA.hoken_national,
-    ]
-  });
-
-  // ④ 建設業許可
-  const kyokaSection = {
-    ic: '📝',
-    title: '建設業許可 申請・サポート',
-    badge: null,
-    items: []
-  };
-  if (_permit === 'yotei') {
-    kyokaSection.badge = '申請推奨';
-    kyokaSection.items.push(...DATA.kyoka_support);
-    kyokaSection.items.push({ type: 'search', query: YAKUSHO_QUERIES.kensetsukyoka(_permit), label: 'Google で建設業許可の手続きを調べる' });
-  } else if (_permit === 'nashi') {
-    kyokaSection.items.push(...DATA.kyoka_support);
-    kyokaSection.items.push({ type: 'search', query: '建設業許可 必要 いくらから', label: 'Google で「建設業許可 必要 いくらから」を検索' });
-  } else {
-    kyokaSection.items.push({ type: 'search', query: '建設業許可 更新 手続き', label: 'Google で建設業許可更新の手続きを調べる' });
-  }
-  sections.push(kyokaSection);
-
-  // ⑤ 税理士・会計
-  sections.push({
-    ic: '📊',
-    title: '税理士・クラウド会計',
-    badge: null,
-    items: [
-      ...DATA.tax_national,
-    ]
-  });
-
-  // ⑥ 建設キャリアアップ (CCUS)
-  sections.push({
-    ic: '💳',
-    title: '建設キャリアアップシステム（CCUS）',
-    badge: null,
-    items: [
-      ...DATA.ccus,
-      { type: 'search', query: '建設キャリアアップシステム 登録方法', label: 'Google でCCUS登録方法を調べる' },
-    ]
-  });
-
-  // ⑦ 役所手続き
-  const yakushoItems = [];
-  if (_role === 'hitori') {
-    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.kaigyodoke(), label: '開業届の書き方・提出方法を調べる' });
-    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.rousai(), label: '一人親方 労災特別加入の手続きを調べる' });
-  } else {
-    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.hojinsetsuritsu(), label: '法人設立登記の手続きを調べる' });
-    yakushoItems.push({ type: 'search', query: YAKUSHO_QUERIES.shakaikoken(), label: '社会保険 加入手続きを調べる' });
-  }
-  sections.push({
-    ic: '🏛️',
-    title: '役所手続き（開業届・法人設立など）',
-    badge: null,
-    items: yakushoItems
-  });
-
-  // ⑧ 求人・外注先
-  sections.push({
-    ic: '👷',
-    title: '求人・外注先探し',
-    badge: null,
-    items: [...DATA.kyuujin]
-  });
-
-  return sections;
-}
-
-// ══════════════════════════════════
-// BUILD ACCORDION
-// ══════════════════════════════════
-function buildAcc(sec) {
-  const acc = document.createElement('div');
-  acc.className = 'acc';
-  const badgeHtml = sec.badge
-    ? `<span class="acc-badge ${sec.badgeClass || ''}">${sec.badge}</span>`
-    : '';
-  acc.innerHTML = `
-    <div class="acc-hd" onclick="toggleAcc(this)">
-      <div class="acc-left">
-        <div class="acc-ic">${sec.ic}</div>
-        <div class="acc-title">${sec.title}${badgeHtml}</div>
-      </div>
-      <span class="acc-chev">▼</span>
+  // ② 業種別営業先
+  const topItems  = td.top.map(t  => `<div class="st-item">📌 ${t}</div>`).join('');
+  const nextItems = td.next.map(t => `<div class="st-item">▶ ${t}</div>`).join('');
+  const laterItems= td.later.map(t=> `<div class="st-item">◎ ${t}</div>`).join('');
+  sections.push({ ic:'📋', title:'業種別 営業先リスト', badge:'必須', badgeCls:'ab-accent', body:`
+    <div class="st-section">
+      <div class="st-head"><span class="st-badge-top">最優先</span> まずここに当たる</div>
+      <div class="st-list">${topItems}</div>
     </div>
-    <div class="acc-body">
-      <div class="vlist" id="vl-${Math.random().toString(36).slice(2)}"></div>
-    </div>`;
+    <div class="st-section">
+      <div class="st-head"><span class="st-badge-next">次点</span> 最優先が安定したら</div>
+      <div class="st-list">${nextItems}</div>
+    </div>
+    <div class="st-section">
+      <div class="st-head"><span class="st-badge-later">余裕があれば</span></div>
+      <div class="st-list">${laterItems}</div>
+    </div>
+  `, open:true });
 
-  const vlist = acc.querySelector('.vlist');
-  sec.items.forEach(item => {
-    if (item.type === 'divider') {
-      const d = document.createElement('div');
-      d.className = 'vdivider';
-      d.textContent = item.label;
-      vlist.appendChild(d);
-    } else if (item.type === 'search') {
-      const q = encodeURIComponent(item.query);
-      const a = document.createElement('a');
-      a.className = 'scard';
-      a.href = `https://www.google.com/search?q=${q}`;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.innerHTML = `<span class="scard-icon">🔍</span><span class="scard-text">🔍 ${item.label}</span>`;
-      vlist.appendChild(a);
-    } else {
-      const a = document.createElement('a');
-      a.className = 'vcard';
-      a.href = item.url;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      const tags = (item.tags || []).map(t =>
-        `<span class="vtag${item.aff ? ' aff' : ''}">${t}</span>`
-      ).join('');
-      const affBadge = item.aff ? '<span class="vtag aff">PR</span>' : '';
-      a.innerHTML = `
-        <div class="v-ic">${item.ic}</div>
-        <div class="v-body">
-          <div class="v-name">${item.name}</div>
-          <div class="v-type">${item.type}</div>
-          <div class="v-tags">${tags}${affBadge}</div>
+  // ③ 全業種共通「紹介が生まれる場所」
+  sections.push({ ic:'⭐', title:'全業種共通「紹介が生まれる場所」', badge:'超重要', badgeCls:'ab-accent', body:`
+    <div class="spot-grid">
+      <div class="spot"><div class="spot-stars">★★★★★</div><div class="spot-b"><div class="spot-title">材料屋・資材屋への営業</div><div class="spot-reason">職人を紹介してくれる。業界内で情報が集まる。独立したら必ず挨拶に行くこと。</div></div></div>
+      <div class="spot"><div class="spot-stars">★★★★★</div><div class="spot-b"><div class="spot-title">足場屋とのつながり</div><div class="spot-reason">全部の現場に入る。あらゆる業種の職人と接点がある。紹介ネットワークの中心。</div></div></div>
+      <div class="spot"><div class="spot-stars">★★★★</div><div class="spot-b"><div class="spot-title">設備屋・電気屋との横のつながり</div><div class="spot-reason">現場で会う頻度が高い。紹介し合える関係を作りやすい。</div></div></div>
+      <div class="spot"><div class="spot-stars">★★★</div><div class="spot-b"><div class="spot-title">リフォーム会社への協力会社登録</div><div class="spot-reason">工種問わず仕事が出やすい。協力会社登録を申請するだけでよい。</div></div></div>
+    </div>
+  ` });
+
+  // ④ 営業方法
+  sections.push({ ic:'📞', title:'営業の進め方（5ステップ）', badge:'実践', badgeCls:'ab-blue', body:`
+    <div class="steps-list">
+      <div class="step-item"><div class="step-n">1</div><div class="step-txt">元いた会社・先輩・後輩・職人仲間に連絡する（<strong>一番確実・最速</strong>）</div></div>
+      <div class="step-item"><div class="step-n">2</div><div class="step-txt">材料屋・足場屋に顔を出す（独立の挨拶＋名刺を渡す）</div></div>
+      <div class="step-item"><div class="step-n">3</div><div class="step-txt">近所の建設会社・工務店に名刺を持って直接訪問する</div></div>
+      <div class="step-item"><div class="step-n">4</div><div class="step-txt">協力会社・応援登録を申し込む（断られても次へ）</div></div>
+      <div class="step-item"><div class="step-n">5</div><div class="step-txt">マッチングサービスに登録する（ツクリンク・ANDPAD等）</div></div>
+    </div>
+  ` });
+
+  // ⑤ 営業トーク例
+  sections.push({ ic:'💬', title:'営業トーク例（そのまま使える）', badge:'今日から使える', badgeCls:'ab-green', body:`
+    <div class="talk-box">
+      <div class="talk-label">基本トーク（これだけでOK）</div>
+      <div class="talk-text">「独立しました。応援でもいいので使ってください。」</div>
+      <div class="talk-hint">シンプルでOK。余計なことは言わなくていい。</div>
+    </div>
+    <div class="talk-box">
+      <div class="talk-label">電話バージョン</div>
+      <div class="talk-text">「${td.label.replace('工事','').replace('（配管）','')}で独立しました〇〇といいます。応援・下請けの形でお仕事いただけませんか。一度お伺いしてもよいですか？」</div>
+      <div class="talk-hint">業種名を自分の業種に変えて使う。</div>
+    </div>
+    <div class="talk-box">
+      <div class="talk-label">訪問バージョン（名刺を渡しながら）</div>
+      <div class="talk-text">「先日独立しました〇〇です。よろしければ協力会社として登録していただければと思いまして。お忙しいところすみません。」</div>
+      <div class="talk-hint">断られても失礼にならない言い方でOK。</div>
+    </div>
+  ` });
+
+  // ⑥ 営業難易度表
+  const rows = DIFF_TABLE.map(r => `
+    <tr>
+      <td>${r.label}</td>
+      <td>${stars(r.diff, 5)}</td>
+      <td>${stars(r.vol, 5)}</td>
+      <td>${stars(r.stable, 5)}</td>
+    </tr>
+  `).join('');
+  sections.push({ ic:'📊', title:'営業先 難易度・仕事量・安定性', badge:'比較', badgeCls:'ab-blue', body:`
+    <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">★が多いほど「難しい」「多い」「安定している」を意味します。</p>
+    <div style="overflow-x:auto;">
+    <table class="diff-table">
+      <thead><tr><th>営業先</th><th>難易度</th><th>仕事量</th><th>安定性</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </div>
+  ` });
+
+  // ⑦ 独立時期別アクションプラン
+  const planItems = plan.items.map(i => `
+    <div class="plan-item"><span class="plan-check">✅</span><span>${i}</span></div>
+  `).join('');
+  sections.push({ ic:'📅', title:`アクションプラン（${periodLabel}）`, badge:'今やること', badgeCls:'ab-green', body:`
+    <div class="plan-box">
+      <div class="plan-title">${plan.label}</div>
+      <div class="plan-items">${planItems}</div>
+    </div>
+  `, open: true });
+
+  // ⑧ 建設業独立の現実
+  sections.push({ ic:'💡', title:'建設業独立の現実（正直に）', badge:'知っておくこと', badgeCls:'ab-red', body:`
+    <div class="reality-box">
+      <div class="reality-title">仕事の取れる経路（実態）</div>
+      <div class="reality-bars">
+        <div class="rbar"><div class="rbar-label">紹介・人脈から</div><div class="rbar-track"><div class="rbar-fill" style="width:50%"></div></div><div class="rbar-pct">50%</div></div>
+        <div class="rbar"><div class="rbar-label">応援・下請けから</div><div class="rbar-track"><div class="rbar-fill" style="width:30%"></div></div><div class="rbar-pct">30%</div></div>
+        <div class="rbar"><div class="rbar-label">直接営業から</div><div class="rbar-track"><div class="rbar-fill" style="width:15%"></div></div><div class="rbar-pct">15%</div></div>
+        <div class="rbar"><div class="rbar-label">ネット・マッチング</div><div class="rbar-track"><div class="rbar-fill" style="width:5%"></div></div><div class="rbar-pct">5%</div></div>
+      </div>
+      <div class="reality-note">→ 最初は人脈が命。前の会社に感謝しながら連絡するのが最速。</div>
+    </div>
+  ` });
+
+  // ⑨ 地図で探す
+  const pref = ''; // GPS取得は下のJSで動的に挿入
+  sections.push({ ic:'🗺️', title:'地図で営業先を探す（GPS連動）', badge:'地域検索', badgeCls:'ab-green', body:`
+    <div class="map-box">
+      <div class="map-title">📍 現在地周辺の営業先をGoogleマップで検索</div>
+      <div class="map-queries" id="mapQueries">
+        <div class="map-query">
+          <a class="map-link" id="mapBtn1" href="#" onclick="openMap(event, '${td.gps}')">🗺️ 「${td.gps}」で検索</a>
         </div>
-        <div class="v-arr">›</div>`;
-      vlist.appendChild(a);
-    }
+        <div class="map-query">
+          <a class="map-link" id="mapBtn2" href="#" onclick="openMap(event, 'リフォーム会社 協力会社登録 募集')" style="background:var(--blue);">🗺️ 「リフォーム会社 協力会社登録 募集」で検索</a>
+        </div>
+        <div class="map-query">
+          <a class="map-link" id="mapBtn3" href="#" onclick="openMap(event, '建設会社 協力会社 応援 募集')" style="background:var(--green);">🗺️ 「建設会社 協力会社 応援 募集」で検索</a>
+        </div>
+      </div>
+      <div class="gps-note">※ GPS位置情報を使って都道府県名を自動取得し、より精度の高い検索を行います。</div>
+    </div>
+  ` });
+
+  // ⑩ マッチングサービス
+  sections.push({ ic:'🔗', title:'マッチングサービス・求人', badge:'登録推奨', badgeCls:'ab-blue', body:`
+    <div class="vlist">
+      <a class="vc" href="https://tsuku-link.com/" target="_blank" rel="noopener">
+        <div class="vic">🏗️</div>
+        <div class="vb"><div class="vtype">建設業特化マッチング</div><div class="vname">ツクリンク</div><div class="vsub">協力会社・元請け探しに特化。無料登録可。</div></div>
+        <div class="vbtn">登録</div>
+      </a>
+      <a class="vc" href="https://andpad.jp/" target="_blank" rel="noopener">
+        <div class="vic">📱</div>
+        <div class="vb"><div class="vtype">建設プロジェクト管理＋受発注</div><div class="vname">ANDPAD受発注</div><div class="vsub">元請けとのやりとりをアプリで管理。</div></div>
+        <div class="vbtn">登録</div>
+      </a>
+      <a class="vc" href="https://kensetsu-cloud.jp/" target="_blank" rel="noopener">
+        <div class="vic">☁️</div>
+        <div class="vb"><div class="vtype">建設業向けクラウド受発注</div><div class="vname">建設クラウド</div><div class="vsub">協力会社登録・案件情報の受け取りに。</div></div>
+        <div class="vbtn">登録</div>
+      </a>
+      <a class="vc" href="https://shokunin-net.com/" target="_blank" rel="noopener">
+        <div class="vic">👷</div>
+        <div class="vb"><div class="vtype">職人・技術者マッチング</div><div class="vname">職人ネット</div><div class="vsub">職人が直接案件を探せるプラットフォーム。</div></div>
+        <div class="vbtn">登録</div>
+      </a>
+    </div>
+    ${_permit === 'yotei' ? `
+    <div style="margin-top:14px;background:var(--warn-soft);border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:12px;">
+      <strong>⚠️ 建設業許可の取得を検討中の方へ</strong><br>
+      行政書士に依頼すると10〜15万円程度が相場。申請は都道府県知事または国土交通大臣に行います。
+      <br><a href="https://px.a8.net/svt/ejp?a8mat=4AZNCL+1KK78Y+3SPO+9FL80Y" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700;">freee開業（無料）で開業届・帳簿を準備する →</a>
+    </div>` : ''}
+  ` });
+
+  // ⑪ 会計・税理士
+  sections.push({ ic:'📊', title:'会計・開業届・税理士ツール', badge:'開業準備', badgeCls:'ab-blue', body:`
+    <div class="vlist">
+      <a class="vc" href="https://px.a8.net/svt/ejp?a8mat=4AZNCL+1KK78Y+3SPO+9FL80Y" target="_blank" rel="noopener">
+        <div class="vic">📝</div>
+        <div class="vb"><div class="vtype">クラウド会計・開業届</div><div class="vname">freee開業</div><div class="vsub">開業届を無料で作成・e-Tax提出。青色申告対応。</div></div>
+        <div class="vbtn">無料</div>
+      </a>
+      <a class="vc" href="https://px.a8.net/svt/ejp?a8mat=4AZO4H+37I44Y+4JGQ+BZ8OY" target="_blank" rel="noopener">
+        <div class="vic">💰</div>
+        <div class="vb"><div class="vtype">クラウド確定申告</div><div class="vname">マネーフォワード確定申告</div><div class="vsub">スマホで経費入力・確定申告。一人親方に人気。</div></div>
+        <div class="vbtn">無料試用</div>
+      </a>
+    </div>
+    <div style="margin-top:12px;">
+      <a class="vc" href="https://www.amazon.co.jp/s?k=建設+工具+資材&tag=shucchouconci-22" target="_blank" rel="noopener">
+        <div class="vic">🔧</div>
+        <div class="vb"><div class="vtype">工具・資材の購入</div><div class="vname">Amazon 建設資材・工具</div><div class="vsub">電動工具・安全用品・消耗品をまとめて購入。</div></div>
+        <div class="vbtn">見る</div>
+      </a>
+    </div>
+    <div class="aff-note">※ 一部リンクはアフィリエイトリンクです。</div>
+  ` });
+
+  // レンダリング
+  const container = document.getElementById('accWrap');
+  container.innerHTML = '';
+  sections.forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'acc' + (s.open ? ' open' : '');
+    div.innerHTML = `
+      <div class="acc-hd" onclick="toggleAcc(this)">
+        <div class="acc-l">
+          <span class="acc-ic">${s.ic}</span>
+          <span class="acc-ti">${s.title}</span>
+        </div>
+        <div class="acc-r">
+          ${s.badge ? `<span class="abadge ${s.badgeCls}">${s.badge}</span>` : ''}
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="acc-body">${s.body}</div>
+    `;
+    container.appendChild(div);
   });
 
-  // Open first section by default
-  if (sec.title.includes('営業先')) {
-    acc.classList.add('open');
-  }
+  // 表示
+  document.getElementById('resWrap').classList.add('show');
+  document.getElementById('goBtn').closest('.go-wrap').style.display = 'none';
 
-  return acc;
+  // GPS取得
+  initGPS(td.gps);
+
+  setTimeout(() => {
+    document.getElementById('resWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
 }
 
-// ══════════════════════════════════
-// ACCORDION TOGGLE
-// ══════════════════════════════════
+// ══════════════════════════════════════════════════════
+// GPS
+// ══════════════════════════════════════════════════════
+function openMap(e, query) {
+  e.preventDefault();
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const url = `https://www.google.com/maps/search/${encodeURIComponent(query)}/@${pos.coords.latitude},${pos.coords.longitude},13z`;
+      window.open(url, '_blank');
+    }, () => {
+      window.open(`https://www.google.com/maps/search/${encodeURIComponent(query)}`, '_blank');
+    });
+  } else {
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(query)}`, '_blank');
+  }
+}
+
+function initGPS(tradeGps) {
+  if (!navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(pos => {
+    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&format=json&accept-language=ja`)
+      .then(r => r.json())
+      .then(data => {
+        const pref = data.address.state || data.address.county || '';
+        if (!pref) return;
+        const btn1 = document.getElementById('mapBtn1');
+        const btn2 = document.getElementById('mapBtn2');
+        const btn3 = document.getElementById('mapBtn3');
+        if (btn1) {
+          const q1 = pref + ' ' + tradeGps;
+          btn1.textContent = `🗺️ 「${q1}」で検索`;
+          btn1.onclick = e => openMap(e, q1);
+        }
+        if (btn2) {
+          const q2 = pref + ' リフォーム会社 協力会社登録 募集';
+          btn2.textContent = `🗺️ 「${q2}」で検索`;
+          btn2.onclick = e => openMap(e, q2);
+        }
+        if (btn3) {
+          const q3 = pref + ' 建設会社 協力会社 応援 募集';
+          btn3.textContent = `🗺️ 「${q3}」で検索`;
+          btn3.onclick = e => openMap(e, q3);
+        }
+      }).catch(() => {});
+  }, () => {});
+}
+
+// ══════════════════════════════════════════════════════
+// ACCORDION
+// ══════════════════════════════════════════════════════
 function toggleAcc(hd) {
   hd.closest('.acc').classList.toggle('open');
 }
 
-// ══════════════════════════════════
+// ══════════════════════════════════════════════════════
 // RESET
-// ══════════════════════════════════
+// ══════════════════════════════════════════════════════
 function doReset() {
-  _role = null; _permit = null; _type = null;
+  _role = null; _permit = null; _trade = null; _period = null;
 
   ['t-hitori','t-houjin'].forEach(id => document.getElementById(id).classList.remove('sel'));
   ['p-nashi','p-ari','p-yotei'].forEach(id => document.getElementById(id).classList.remove('sel'));
+  ['pd-0to3','pd-3to12','pd-1plus'].forEach(id => document.getElementById(id).classList.remove('sel'));
   document.querySelectorAll('.tcard').forEach(c => c.classList.remove('sel'));
-  ['sn1','sn2','sn3'].forEach(id => document.getElementById(id).classList.remove('done'));
+  ['sn1','sn2','sn3','sn4'].forEach(id => document.getElementById(id).classList.remove('done'));
 
-  document.getElementById('step2').style.opacity = '.35';
-  document.getElementById('step2').style.pointerEvents = 'none';
-  document.getElementById('step3').style.opacity = '.35';
-  document.getElementById('step3').style.pointerEvents = 'none';
+  ['step2','step3','step4'].forEach(id => {
+    document.getElementById(id).style.opacity = '.35';
+    document.getElementById(id).style.pointerEvents = 'none';
+  });
+
   document.getElementById('goBtn').disabled = true;
+  const gw = document.getElementById('goBtn').closest('.go-wrap');
+  if (gw) gw.style.display = '';
 
-  document.getElementById('step1').style.display = '';
-  document.getElementById('step2').style.display = '';
-  document.getElementById('step3').style.display = '';
   document.getElementById('resWrap').classList.remove('show');
   document.getElementById('accWrap').innerHTML = '';
 
